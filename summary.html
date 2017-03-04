@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>GA AERA Prismic project</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="prismic-api" content="https://ga-aera.prismic.io/api">
+    <meta name="prismic-oauth-client-id" content="WLYdACYAAIIAx5fm">
+
+    <script src="js/ejs-1.0.js"></script>
+    <script src="js/prismic.io-1.0.10.min.js"></script>
+    <script src="js/prismic.io-singlepage-1.0.0.js"></script>
+  </head>
+  <body>
+    <script type="text/prismic-query" data-binding="content">
+      [
+        [:d = any(document.type, ["executive-summary"])]
+      ]
+    </script>
+
+    <h1>[%= content[0].getText("executive-summary.title") %]</h1>
+
+
+    <article>
+
+        <section>
+            <h2>Key messages</h2>
+            [%- content[0].getHtml("executive-summary.key-messages") %]
+        </section>
+
+        <section>
+            <h2>Introduction</h2>
+            [%- content[0].getHtml("executive-summary.introduction") %]
+        </section>
+
+        <section>
+            <h2>Australia in the world energy market</h2>
+            [%- content[0].getHtml("executive-summary.world-energy-market") %]
+        </section>
+        
+        <section>
+            <h2>Australia's energy resources</h2>
+            [%- content[0].getHtml("executive-summary.energy-resources") %]
+        </section>
+
+        <section>
+            <h2>References</h2>
+            [%- content[0].getHtml("executive-summary['references']") %]
+        </section>
+
+    </article>
+
+  </body>
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>GA AERA Prismic project</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="prismic-api" content="https://ga-aera.prismic.io/api">
+
+    <meta name="prismic-oauth-client-id" content="WLYdACYAAIIAx5fm">
+    <link href="ga-aera-styles.css" rel="stylesheet">
+    <script src="js/ejs-1.0.js"></script>
+    <script src="https://unpkg.com/prismic.io@2.0.0-beta2/dist/prismic.io.min.js"></script>
+    <!--<script src="js/prismic.io-1.0.10.min.js"></script>-->
+    <script src="js/prismic.io-singlepage-1.0.0.js"></script>
+  </head>
+  <body>
+    <script type="text/prismic-query" data-binding="content">
+      [
+        [:d = any(document.type, ["resources-oil"])]
+      ]
+    </script>
+
+    <h1>Oil</h1>
+
+
+    <article>
+
+        <section>
+            <h2>Summary</h2>
+            <aside>
+                [%- content[0].getHtml('resources-oil.summary-image-with-caption', 'thumbnail') %]
+            </aside>
+            [%- content[0].getHtml("resources-oil.summary-content") %]
+
+            [%- content[0].getHtml("resources-oil.chapter-dataset") %]
+        </section>
+
+        <section>
+            <h2>Identified resources</h2>
+            [%- content[0].getHtml("resources-oil.identified-resources") %]
+
+            [% content[0].getGroup('resources-oil.image-gallery').toArray().forEach(function(imageWithCaption) { %]                
+            <span>[% imageWithCaption.asHtml() %]</span>
+            [% }) %]
+
+
+        </section>
+
+        <section>
+            <h2>Prospective resources</h2>
+            [%- content[0].getHtml("resources-oil.prospective-resources") %]
+        </section>
+        
+        <section>
+            <h2>World resources</h2>
+            [%- content[0].getHtml("resources-oil.world-resources") %]
+        </section>
+
+        <section>
+            <h2>References</h2>
+            <ul>
+                [% content[0].getStructuredText("resources-oil.references") %]
+            </ul>
+        </section>
+
+    </article>
+
+  </body>
+</html>
