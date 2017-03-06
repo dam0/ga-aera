@@ -16,6 +16,82 @@
   <script src="js/prismic.io.min.js"></script>
   <!--<script src="js/prismic.io-1.0.10.min.js"></script>-->
   <script src="js/prismic.io-singlepage-1.0.0.js"></script>
+
+  <style>
+    article {
+      font-size: 0;
+      margin: 25px 0;
+    }
+    
+    article:after {
+      clear: both;
+      content: '';
+      display: table;
+    }
+    
+    article section {
+      display: inline;
+    }
+    
+    article label {
+      display: inline-block;
+      font-size: 16px;
+      font-size: 1rem;
+      left: 1px;
+      margin-left: 2em;
+      padding: 10px;
+      position: relative;
+      vertical-align: bottom;
+      cursor: pointer;
+      color: slategray;
+    }
+    
+    section>[type="radio"] {
+      clip: rect(0 0 0 0);
+      height: 1px;
+      opacity: 0;
+      position: fixed;
+      width: 1px;
+      z-index: -1;
+    }
+    
+    article .tab-panel {
+      display: inline;
+      display: inline-block;
+      overflow: hidden;
+      position: relative;
+      height: 0;
+      width: 0;
+    }
+    
+    article .tab-content {
+      -webkit-box-sizing: border-box;
+      -moz-box-sizing: border-box;
+      box-sizing: border-box;
+      display: block;
+      background: white;
+      padding: 0 20px;
+      border: 1px solid lightgrey;
+      float: left;
+      font-size: 16px;
+      font-size: 1rem;
+      margin-top: -1px;
+      width: 100%;
+    }
+    
+    article section [type="radio"]:checked+label {
+      background: white;
+      color:black;
+      border-bottom: 1px solid lightblue; 
+      border-bottom-width: 6px;
+      padding-bottom: 1.5em;
+      z-index: 1;
+    }
+    
+    article section [type="radio"]:checked~.tab-panel {
+      display: inline;
+    }
+  </style>
 </head>
 
 <body>
@@ -28,89 +104,116 @@
   <article>
 
     <section>
-      <h2>Summary</h2>
-      
-      <aside>
-        [%- content[0].getHtml('resources-gas.summary-image-with-caption', 'thumbnail') %]
-      </aside>
+      <input name="tabbed" id="summary" type="radio">
+      <label for="summary">Summary</label>
 
-      [%- content[0].getHtml("resources-gas.summary-content") %]
+      <div class="tab-panel">
+        <div class="tab-content">
+          <h2>Summary</h2>
 
-      [%- content[0].getHtml("resources-gas.chapter-dataset") %]
+          <aside>
+            [%- content[0].getHtml('resources-gas.summary-image-with-caption', 'thumbnail') %]
+          </aside>
 
+          [%- content[0].getHtml("resources-gas.summary-content") %] [%- content[0].getHtml("resources-gas.chapter-dataset") %]
+        </div>
+      </div>
     </section>
 
     <section>
-      <h2>Identified resources</h2>
-      [%- content[0].getHtml("resources-gas.identified-resources") %]
+      <input name="tabbed" id="identified-resources" type="radio">
+      <label for="identified-resources">Identified resources</label>
 
-      <div class="gallery">
+      <div class="tab-panel">
+        <div class="tab-content">
+          <h2>Identified resources</h2>
+          [%- content[0].getHtml("resources-gas.identified-resources") %]
 
-        [% var gallery = content[0].getGroup('resources-gas.images').toArray() %] 
-        [% gallery.forEach(function(image) { %] 
-        [% var linkLarge = image.getImageView("image","large").url %]
+          <div class="gallery">
 
-        <div class="image">
-          <a href="[%- linkLarge  %]" target="_blank" title="Open larger image view">
+            [% var gallery = content[0].getGroup('resources-gas.images').toArray() %] [% gallery.forEach(function(image) { %] [% var linkLarge = image.getImageView("image","large").url %]
+
+            <div class="image">
+              <a href="[%- linkLarge  %]" target="_blank" title="Open larger image view">
             [%- image.getImageView("image","small").asHtml()  %]
             </a>
-          <div class="caption">[%- image.getFirstParagraph().text %]</div>
+              <div class="caption">[%- image.getFirstParagraph().text %]</div>
+            </div>
+            [% }) %]
+          </div>
         </div>
-        [% }) %]
       </div>
     </section>
 
     <section>
-      <h2>Prospective resources</h2>
-      [%- content[0].getHtml("resources-gas.prospective-resources") %]
+      <input name="tabbed" id="prospective-resources" type="radio">
+      <label for="prospective-resources">Prospective resources</label>
 
-      <div class="table">
-        <caption></caption>
-        <div class="tr">
-            <span class="th" rowspan="2">Basin</span>
-            <span class="th" colspan="4">Estimated gas-in-place (TCF)</span>
-            <span class="th">Prospective Recoverable Gas (5% of P50) (TCF/Bbls)</span>
-          <div class="tr">
-          </div>
-            <span class="th">P90</span>
-            <span class="th">P50</span>
-            <span class="th">P10</span>
-            <span class="th">Mean</span>
-          </div>
-          [% var basins = content[0].getGroup('resources-gas.table').toArray() %] 
-          [% basins.forEach(function(basin) { %]
-          [% var row = basin.data %]
-          <div class="tr">
-            <span class="td" data-field="Basin Name">
+      <div class="tab-panel">
+        <div class="tab-content">
+          <h2>Prospective resources</h2>
+          [%- content[0].getHtml("resources-gas.prospective-resources") %]
+
+          <div class="table">
+            <caption></caption>
+            <div class="tr">
+              <span class="th" rowspan="2">Basin</span>
+              <span class="th" colspan="4">Estimated gas-in-place (TCF)</span>
+              <span class="th">Prospective Recoverable Gas (5% of P50) (TCF/Bbls)</span>
+              <div class="tr">
+              </div>
+              <span class="th">P90</span>
+              <span class="th">P50</span>
+              <span class="th">P10</span>
+              <span class="th">Mean</span>
+            </div>
+            [% var basins = content[0].getGroup('resources-gas.table').toArray() %] [% basins.forEach(function(basin) { %] [% var row = basin.data %]
+            <div class="tr">
+              <span class="td" data-field="Basin Name">
               [%= row['Basin Name'].value -%] </span>
-            <span class="td" data-field="Resource type">
+              <span class="td" data-field="Resource type">
               [%= row['Resource type'].value -%]</span>
-            <span class="td" data-field="P90">
+              <span class="td" data-field="P90">
               [%= row['P90'].value -%]</span>
-            <span class="td" data-field="P50">
+              <span class="td" data-field="P50">
               [%= row['P50'].value -%]</span>
-            <span class="td" data-field="P10">
+              <span class="td" data-field="P10">
               [%= row['P10'].value -%]</span>
-            <span class="td" data-field="Mean">
+              <span class="td" data-field="Mean">
               [%= row['Mean'].value -%]</span>
-            <span class="td" data-field="5% of P50">
+              <span class="td" data-field="5% of P50">
               [%= row['5% of P50'].value -%]</span>
+            </div>
+            [% }) %]
           </div>
-          [% }) %]
+        </div>
       </div>
-      
     </section>
 
     <section>
-      <h2>World resources</h2>
-      [%- content[0].getHtml("resources-gas.world-resources") %]
+      <input name="tabbed" id="world-resources" type="radio">
+      <label for="world-resources">World resources</label>
+      <div class="tab-panel">
+        <div class="tab-content">
+          <h2>World resources</h2>
+          [%- content[0].getHtml("resources-gas.world-resources") %]
+
+        </div>
+      </div>
     </section>
 
     <section>
-      <h2>References</h2>
-      <ul>
-        [% content[0].getStructuredText("resources-gas.references") %]
-      </ul>
+      <input name="tabbed" id="references" type="radio">
+      <label for="references">References</label>
+
+      <div class="tab-panel">
+        <div class="tab-content">
+          <h2>References</h2>
+          <ul>
+            [% content[0].getStructuredText("resources-gas.references") %]
+          </ul>
+        </div>
+      </div>
     </section>
 
   </article>
