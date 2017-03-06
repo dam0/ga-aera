@@ -1,3 +1,15 @@
+body{
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-weight: 400;
+}
+h1, h2, h3{
+  font-weight: 300;
+}
+p{
+  font-size: small;
+  font-weight: normal;
+  line-height: 20px;
+}
 aside {
     float:right;
     padding-left: 2em;
@@ -8,4 +20,78 @@ aside img{
 }
 aside p{
     font-size: smaller;
+}
+.image{
+  width: 250px;
+  height:auto;
+  margin: 1em;
+  flex: auto;
+
+}
+.gallery{
+  text-align: center;
+  display: flex;
+}
+section{
+  clear: both;
+}
+.table{
+  display: table;
+  width: 80%;
+}
+.table > section.row.thead{
+  background: #006983;
+  color: white;
+  font-size: .8em;
+  padding: 8px;
+  line-height: 1.42857143;
+  vertical-align: top;
+  border-top: 1px solid #ddd;
+}
+section.row.thead >span{
+  display: table-cell;
+}
+.tblData{
+  width:20px;
+}
+table{
+  border-spacing: 0;
+  border-collapse: collapse;
+  width:80%;
+}
+.thead{
+  background: #006983;
+  color: white;
+  font-size: .8em;
+  padding: 8px;
+  line-height: 1.42857143;
+  vertical-align: top;
+  border-top: 1px solid #ddd;
+}
+.row{
+  width: 80%;
+  display: table-row;
+}
+
+.row section{
+  display: table-cell;
+  width: 8%;
+  border-bottom: 1px solid lightgray;
+  padding: .5em;
+}
+section[data-field="Basin Name"]{
+  /*display: none;*/
+  background: #006983;
+  color: white;
+}
+section[data-field="Resource type"]{
+  width: 10%;
+}
+.row section.tcf{
+  width: 50%;
+}
+.caption{
+  font-style: italic;
+  font-size: smaller;
+
 }

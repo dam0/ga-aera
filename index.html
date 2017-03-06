@@ -1,66 +1,62 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Your prismic.io singlepage project</title>
-    <meta name="description" content="">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="prismic-api" content="https://lesbonneschoses-uzbwuqeaafgaxjun.prismic.io/api">
-    <meta name="prismic-oauth-client-id" content="UzHD5AEAAA2GxOTo">
 
-    <script src="js/ejs-1.0.js"></script>
-    <script src="js/prismic.io-1.0.10.min.js"></script>
-    <script src="js/prismic.io-singlepage-1.0.0.js"></script>
-  </head>
-  <body>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Your prismic.io singlepage project</title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="prismic-api" content="https://lesbonneschoses-uzbwuqeaafgaxjun.prismic.io/api">
+  <meta name="prismic-oauth-client-id" content="UzHD5AEAAA2GxOTo">
 
-    <script type="text/prismic-query" data-binding="featuredProducts">
-      [
-        [:d = any(document.type, ["product"])]
-        [:d = at(document.tags, ["Featured"])]
-      ]
-    </script>
+  <script src="js/ejs-1.0.js"></script>
+  <script src="js/prismic.io-1.0.10.min.js"></script>
+  <!--<script src="js/prismic.io-singlepage-1.0.0.js"></script>-->
+  <script src="js/prismic.io.min.js"></script>
+</head>
 
-    <h1>[%= featuredProducts.length %] featured products:</h1>
+<body>
 
-    [% featuredProducts.forEach(function(product) { %]
+  <script type="text/prismic-query" data-binding="featuredProducts">
+    [ [:d = any(document.type, ["product"])] [:d = at(document.tags, ["Featured"])] ]
+  </script>
 
-      <div>
-          <h2>[%= product.getText('product.name') %]</h2>
-          <!--
+  <h1>[%= featuredProducts.length %] featured products:</h1>
+
+  [% featuredProducts.forEach(function(product) { %]
+
+  <div>
+    <h2>[%= product.getText('product.name') %]</h2>
+    <!--
             The “src” attribute will be automatically populated using the content
             of the “data-src” attribute _after_ the generation.
             This hack is made to avoid browser to try loading the image at a bad
             url (the query).
           -->
-          <img data-src="[%= product.getImageView('product.image', 'icon').url %]">
-      </div>
+    <img data-src="[%= product.getImageView('product.image', 'icon').url %]">
+  </div>
 
-    [% }) %]
+  [% }) %]
 
-    <h1>And this is featured in our blog:</h1>
+  <h1>And this is featured in our blog:</h1>
 
-    <script type="text/prismic-query" data-binding="blogPosts" data-form="blog">
-      [
-        [:d = at(document.tags, ["Featured"])]
-      ]
-    </script>
+  <script type="text/prismic-query" data-binding="blogPosts" data-form="blog">
+    [ [:d = at(document.tags, ["Featured"])] ]
+  </script>
 
-    [% blogPosts.forEach(function(post) { %]
+  [% blogPosts.forEach(function(post) { %]
 
-      <article>
-          <h2>[%= post.getStructuredText("blog-post.body").getTitle().text %]</h2>
-          <p>[%= post.getStructuredText("blog-post.body").getFirstParagraph().text %]</p>
-      </article>
+  <article>
+    <h2>[%= post.getStructuredText("blog-post.body").getTitle().text %]</h2>
+    <p>[%= post.getStructuredText("blog-post.body").getFirstParagraph().text %]</p>
+  </article>
 
-      <hr>
+  <hr> [% }) %]
 
-    [% }) %]
-
-    <p>
-      [% if(loggedIn) { %]
-        <select data-prismic-action="update">
+  <p>
+    [% if(loggedIn) { %]
+    <select data-prismic-action="update">
           [% refs.forEach(function(r) { %]
             [% if(r.ref == ref) { %]
               <option value="[%= r.ref %]" selected="selected">[%= r.label %]</option>
@@ -69,11 +65,10 @@
             [% } %]
           [% }) %]
         </select>
-        <button data-prismic-action="signout">Sign out</button>
-      [% } else { %]
-        <button data-prismic-action="signin">Sign in</button>
-      [% } %]
-    </p>
+    <button data-prismic-action="signout">Sign out</button> [% } else { %]
+    <button data-prismic-action="signin">Sign in</button> [% } %]
+  </p>
 
-  </body>
+</body>
+
 </html>

@@ -19,30 +19,30 @@
   <body>
     <script type="text/prismic-query" data-binding="content">
       [
-        [:d = any(document.type, ["resources-oil"])]
+        [:d = any(document.type, ["resources-coal"])]
       ]
     </script>
 
-    <h1>Oil</h1>
+    <h1>Coal</h1>
 
     <article>
 
         <section>
             <h2>Summary</h2>
             <aside>
-                [%- content[0].getHtml('resources-oil.summary-image-with-caption', 'thumbnail') %]
+                [%- content[0].getHtml('resources-coal.summary-image-with-caption', 'thumbnail') %]
             </aside>
-            [%- content[0].getHtml("resources-oil.summary-content") %]
+            [%- content[0].getHtml("resources-coal.summary-content") %]
 
-            [%- content[0].getHtml("resources-oil.chapter-dataset") %]
+            [%- content[0].getHtml("resources-coal.chapter-dataset") %]
         </section>
 
         <section>
             <h2>Identified resources</h2>
-            [%- content[0].getHtml("resources-oil.identified-resources") %]
+            [%- content[0].getHtml("resources-coal.identified-resources") %]
 
 
-            [% content[0].getGroup('resources-oil.image-gallery').toArray().forEach(function(imageWithCaption) { %]                
+            [% content[0].getGroup('resources-coal.image-gallery').toArray().forEach(function(imageWithCaption) { %]                
             <span>[%- imageWithCaption.asHtml() %]</span>
             [% }) %]
             <!--for slice in pageContent.getSliceZone('article.body').slices
@@ -54,18 +54,18 @@
 
         <section>
             <h2>Prospective resources</h2>
-            [%- content[0].getHtml("resources-oil.prospective-resources") %]
+            [%- content[0].getHtml("resources-coal.prospective-resources") %]
         </section>
         
         <section>
             <h2>World resources</h2>
-            [%- content[0].getHtml("resources-oil.world-resources") %]
+            [%- content[0].getHtml("resources-coal.world-resources") %]
         </section>
 
         <section>
             <h2>References</h2>
             <ul>
-                [% content[0].getStructuredText("resources-oil.references") %]
+                [% content[0].getStructuredText("resources-coal.references") %]
             </ul>
         </section>
 
