@@ -29,10 +29,15 @@
 
     <section>
       <h2>Summary</h2>
+      
       <aside>
         [%- content[0].getHtml('resources-gas.summary-image-with-caption', 'thumbnail') %]
       </aside>
-      [%- content[0].getHtml("resources-gas.summary-content") %] [%- content[0].getHtml("resources-gas.chapter-dataset") %]
+
+      [%- content[0].getHtml("resources-gas.summary-content") %]
+
+      [%- content[0].getHtml("resources-gas.chapter-dataset") %]
+
     </section>
 
     <section>
@@ -40,7 +45,11 @@
       [%- content[0].getHtml("resources-gas.identified-resources") %]
 
       <div class="gallery">
-        [% var gallery = content[0].getGroup('resources-gas.images').toArray() %] [% gallery.forEach(function(image) { %] [% var linkLarge = image.getImageView("image","large").url %]
+
+        [% var gallery = content[0].getGroup('resources-gas.images').toArray() %] 
+        [% gallery.forEach(function(image) { %] 
+        [% var linkLarge = image.getImageView("image","large").url %]
+
         <div class="image">
           <a href="[%- linkLarge  %]" target="_blank" title="Open larger image view">
             [%- image.getImageView("image","small").asHtml()  %]
@@ -55,37 +64,41 @@
       <h2>Prospective resources</h2>
       [%- content[0].getHtml("resources-gas.prospective-resources") %]
 
-      <table>
+      <div class="table">
         <caption></caption>
-        <thead>
-          <tr>
-            <th rowspan="2">Basin</th>
-            <th colspan="4">Estimated gas-in-place (TCF)</th>
-            <th style="width:230px;" rowspan="2">Prospective Recoverable Gas (5% of P50) (TCF/Bbls)</th>
-          </tr>
-          <tr>
-            <th>P90</th>
-            <th>P50</th>
-            <th>P10</th>
-            <th>Mean</th>
-          </tr>
-        </thead>
-        <tbody>
+        <div class="tr">
+            <span class="th" rowspan="2">Basin</span>
+            <span class="th" colspan="4">Estimated gas-in-place (TCF)</span>
+            <span class="th">Prospective Recoverable Gas (5% of P50) (TCF/Bbls)</span>
+          <div class="tr">
+          </div>
+            <span class="th">P90</span>
+            <span class="th">P50</span>
+            <span class="th">P10</span>
+            <span class="th">Mean</span>
+          </div>
           [% var basins = content[0].getGroup('resources-gas.table').toArray() %] 
-          [% basins.forEach(function(row){ %]
-          <tr>
-          <td data-field='Basin Name'> [% row.data['Basin Name']['value'] %] </td>
-          <td data-field='Resource type'>[%- row.data['Resource type'].value %]</td>
-          <td data-field='P90'>[%- row.data['P90'].value %]</td>
-          <td data-field='P50'>[%- row.data['P50'].value %]</td>
-          <td data-field='P10'>[%- row.data['P10'].value %]</td>
-          <td data-field='Mean'>[%- row.data['Mean'].value %]</td>
-          <td data-field='5% of P50'>[%- row.data['5% of P50'].value %]</td>
-          </tr>            
+          [% basins.forEach(function(basin) { %]
+          [% var row = basin.data %]
+          <div class="tr">
+            <span class="td" data-field="Basin Name">
+              [%= row['Basin Name'].value -%] </span>
+            <span class="td" data-field="Resource type">
+              [%= row['Resource type'].value -%]</span>
+            <span class="td" data-field="P90">
+              [%= row['P90'].value -%]</span>
+            <span class="td" data-field="P50">
+              [%= row['P50'].value -%]</span>
+            <span class="td" data-field="P10">
+              [%= row['P10'].value -%]</span>
+            <span class="td" data-field="Mean">
+              [%= row['Mean'].value -%]</span>
+            <span class="td" data-field="5% of P50">
+              [%= row['5% of P50'].value -%]</span>
+          </div>
           [% }) %]
-        </tbody>
-      </table>
       </div>
+      
     </section>
 
     <section>
