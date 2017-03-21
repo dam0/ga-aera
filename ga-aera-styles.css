@@ -35,6 +35,43 @@ aside p{
 section{
   clear: both;
 }
+
+.table    { display: table }
+.tr       { display: table-row }
+.thead    { display: table-header-group }
+.tbody    { display: table-row-group }
+.tfoot    { display: table-footer-group }
+.col      { display: table-column }
+.colgroup { display: table-column-group }
+.td, .th   { 
+  display: table-cell; 
+  padding: 8px;
+line-height: 1.42857143;
+vertical-align: top;
+border-bottom: 1px solid #ddd;
+  }
+/*.caption  { display: table-caption }*/
+.th{
+  background-color: #006983;
+  color: white;
+}
+.basin-name{
+  width: 20%;
+}
+.resource-type{
+  width: 20%;
+}
+.number{
+  width: 5%;
+  text-align: center;
+} 
+span.number{
+  padding-top: 0;
+  border-bottom: none;
+}
+
+
+/*
 .table{
   display: table;
   width: 80%;
@@ -94,4 +131,4 @@ section[data-field="Resource type"]{
   font-style: italic;
   font-size: smaller;
 
-}
+}*/
