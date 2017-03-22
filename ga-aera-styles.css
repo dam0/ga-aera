@@ -32,8 +32,9 @@ aside p{
   text-align: center;
   display: flex;
 }
-section{
+article > section{
   clear: both;
+  padding-top: 5em;
 }
 
 .table    { display: table }

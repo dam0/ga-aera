@@ -115,11 +115,11 @@
 
   <article>
     <section id="summary">
+
       <h2>Summary</h2>
+
       <aside>
-
         [%- content[0].getHtml('resources-gas.summary-image-with-caption', 'thumbnail') %]
-
       </aside>
 
       [%- content[0].getHtml("resources-gas.summary-content") %] [%- content[0].getHtml("resources-gas.chapter-dataset") %]
@@ -129,7 +129,6 @@
     <section id="identified">
 
       <h2>Identified resources</h2>
-
       [%- content[0].getHtml("resources-gas.identified-resources") %]
 
       <div class="gallery">
@@ -138,26 +137,17 @@
 
         <div class="image">
           <a href="[%- linkLarge  %]" target="_blank" title="Open larger image view">
-            
             [%- image.getImageView("image","small").asHtml()  %]
-            
             </a>
-          <div class="caption">
-
-            [%- image.getFirstParagraph().text %]
-
-          </div>
+          <div class="caption">[%- image.getFirstParagraph().text %]</div>
         </div>
-
         [% }) %]
-      
       </div>
 
     </section>
 
     <section id="prospective">
       <h2>Prospective resources</h2>
-
       [%- content[0].getHtml("resources-gas.prospective-resources") %]
 
       <div class="table">
@@ -174,68 +164,58 @@
           </div>
           <div class="th" style="width: 20%">Prospective Recoverable Gas (5% of P50) (TCF/Bbls)</div>
         </div>
-
-        [% var basins = content[0].getGroup('resources-gas.basin').toArray() %] [% basins.forEach(function(group) { %] [% var row = group.data %]
-        <!--[ % console.log(row) % ]-->
-
+        [% var basins = content[0].getGroup('resources-gas.basin').toArray() %] 
+        [% basins.forEach(function(basin) { %] 
+        [% var row = basin.data %]
         <div class="tr">
           <div class="td basin-name" data-field="Basin Name">
-
-            [%= row["basin-name"].value -%] </div>
-
+            [%= row['basin-name'].value -%] </div>
           <div class="td resource-type" data-field="Resource type">
-
-            [%= row["type"].value -%]
-
-            <span> Resources</span></div>
+            [%= row['types'].value -%]<span> Resources</span></div>
           <div class="td" style="width: 40%">
             <span class="td number" data-field="P90">
-            
-                [%= row['P90'].value -%]
-            
-            </span>
+                [%= row['P90'].value -%]</span>
             <span class="td number" data-field="P50">
-                
-                [%= row['P50'].value -%]
-
-            </span>
+                [%= row['P50'].value -%]</span>
             <span class="td number" data-field="P10">
-                
-                [%= row['P10'].value -%]
-                
-            </span>
+                [%= row['P10'].value -%]</span>
             <span class="td number" data-field="Mean">
-                
-                [%= row['Mean'].value -%]
-                
-            </span>
+                [%= row['Mean'].value -%]</span>
           </div>
           <div class="td number" data-field="5% of P50" style="width: 20%">
+            [%= row['5% of P50'].value -%]</div>
+          <div class="td " data-field="">
 
-            [%= row['5% of P50'].value -%]
           </div>
         </div>
-
         [% }) %]
 
       </div>
-    </section>
-    <section id="world">
-      <h2>World resources</h2>
 
+    </section>
+
+    <section id="world">
+
+      <h2>World resources</h2>
       [%- content[0].getHtml("resources-gas.world-resources") %]
 
     </section>
+
     <section id="references">
+
       <h2>References</h2>
       <ul>
-
+        
         [% var references = content[0].getGroup('resources-gas.reference').toArray() %] [% references.forEach(function(ref) { %]
         <li>[%- ref.asHtml() %]</li>
         [% }) %]
 
       </ul>
     </section>
+
   </article>
+
+
 </body>
+
 </html>
