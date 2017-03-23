@@ -13,6 +13,7 @@ p{
 aside {
     float:right;
     padding-left: 2em;
+    width: 250px;
 }
 aside img{
     width: 200px;
@@ -31,6 +32,9 @@ aside p{
 .gallery{
   text-align: center;
   display: flex;
+}
+main{
+  padding-bottom:5em;
 }
 article > section{
   clear: both;
@@ -70,7 +74,9 @@ span.number{
   padding-top: 0;
   border-bottom: none;
 }
-
+#references li{
+  margin-left: -2em;
+}
 
 /*
 .table{
