@@ -58,11 +58,13 @@
     .modal-dialog {
       margin-top: 25%;
     }
+    
     .carousel-control.right {
-    right: -100px;
+      right: -100px;
     }
+    
     .carousel-control.left {
-    left: -100px;
+      left: -100px;
     }
   </style>
 
@@ -82,8 +84,7 @@
       $('body').scrollspy({
         target: ".navbar"
       });
-      $(".carousel-inner div.item:first-child").addClass("active")
-        /* activate the carousel */
+      $(".carousel-inner div.item:first-child").addClass("active");
       $("#modal-carousel").carousel({
         interval: false
       });
@@ -110,8 +111,7 @@
         $("#modal-gallery").modal("show");
       });
 
-    });
-  </script>
+    })  </script>
 
   <script type="text/prismic-query" data-binding="content">
     [ [:d = any(document.type, ["resources-gas"])] ]
@@ -160,6 +160,50 @@
           [%- content[0].getHtml('resources-gas.summary-image-with-caption', 'thumbnail') %]
         </aside>
 
+        <div class="table">
+          <caption></caption>
+          <div class="tr">
+            <div class="th"> Resource category </div>
+            <div class="th"> Conventional gas
+              <span class="th">PJ</span>
+              <span class="th">TcF</span></div>
+            <div class="th"> Coal seam gas
+              <span class="th">PJ</span>
+              <span class="th">TcF</span>
+            </div>
+            <div class="th">Tight gas
+              <span class="th">PJ</span>
+              <span class="th">TcF</span> </div>
+            <div class="th"> Shale gas
+              <span class="th">PJ</span>
+              <span class="th">TcF</span></div>
+            <div class="th">Total gas
+              <span class="th">PJ</span>
+              <span class="th">TcF</span></div>
+          </div>
+          [% var reserves = content[0].getGroup('resources-gas.reserves').toArray() %] 
+          [% console.log( content[0]) %]
+          [% reserves.forEach(function(category) { %]
+          [% var row = category.data %]
+
+          <div class="tr">
+            <div class="td"> </div>
+            <div class="td"></div>
+            <div class="td"></div>
+            <div class="td"></div>
+            <div class="td"></div>
+            <div class="td"></div>
+            <div class="td"></div>
+            <div class="td"></div>
+            <div class="td"></div>
+            <div class="td"></div>
+            <div class="td"></div>
+          </div>
+
+          [% }) %]
+
+        </div>
+
         [%- content[0].getHtml("resources-gas.summary-content") %] [%- content[0].getHtml("resources-gas.chapter-dataset") %]
 
       </section>
@@ -171,7 +215,8 @@
 
         <div class="gallery">
 
-          [% var gallery = content[0].getGroup('resources-gas.images').toArray() %] [% gallery.forEach(function(image) { %] [% var linkLarge = image.getImageView("image","large").url %]
+          [% var gallery = content[0].getGroup('resources-gas.images').toArray() %] [% gallery.forEach(function(image) { %] [% var
+          linkLarge = image.getImageView("image","large").url %]
 
           <div class="image">
             <!--<a href="[%- linkLarge  %]" target="_blank" title="Open larger image view">-->
@@ -189,12 +234,11 @@
               <div class="modal-body">
                 <div id="modal-carousel" class="carousel">
                   <div class="carousel-inner">
-                    
-                    [% var gallery = content[0].getGroup('resources-gas.images').toArray() %] 
-                    [% gallery.forEach(function(image, i) { %]
-                    
+
+                    [% var gallery = content[0].getGroup('resources-gas.images').toArray() %] [% gallery.forEach(function(image, i) { %]
+
                     <div class="item">
-                      
+
                       [%- image.getImage("image","large").asHtml() %]
 
                       <caption>
@@ -223,7 +267,7 @@
 
       <section id="prospective">
         <h2>Prospective resources</h2>
-       
+
         [%- content[0].getHtml("resources-gas.prospective-resources") %]
 
         <div class="table">
@@ -240,11 +284,9 @@
             </div>
             <div class="th" style="width: 20%">Prospective Recoverable Gas (5% of P50) (TCF/Bbls)</div>
           </div>
-          [% var basin_name %]
-          [% var basins = content[0].getGroup('resources-gas.basin').toArray() %] 
-          [% basins.forEach(function(basin) { %] 
-          [% var row = basin.data %]
-          [% name = (row['basin-name'].value == basin_name) ? "" :  row['basin-name'].value %]
+          [% var basin_name %] [% var basins = content[0].getGroup('resources-gas.basin').toArray() %] [% basins.forEach(function(basin)
+          { %] [% var row = basin.data %] [% name = (row['basin-name'].value == basin_name) ? "" : row['basin-name'].value
+          %]
 
 
           <div class="tr">
@@ -266,8 +308,7 @@
               [%= row['5% of P50'].value -%]</div>
           </div>
 
-          [% basin_name = row['basin-name'].value %]
-          [% }) %]
+          [% basin_name = row['basin-name'].value %] [% }) %]
 
         </div>
 

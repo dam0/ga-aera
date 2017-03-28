@@ -1,0 +1,33 @@
+"totals": {
+    "type": "Group",
+    "config": {
+        "repeat": true,
+        "fields": {
+            "categories": {
+                "type": "Select",
+                "config": {
+                "options": [
+                    "Reserves",
+                    "Contingent resources",
+                    "All identified resources",
+                    "Prospective resources"
+                ],
+                "label": "Resource category",
+                "placeholder": "Select category.."
+                }
+            },
+            "pj": {
+                "type": "Number",
+                "config": {
+                    "label": "PJ"
+                }
+            },
+            "tcf": {
+                "type": "Number",
+                "config": {
+                    "label": "TcF"
+                }
+            }
+        }
+    }
+},
