@@ -223,6 +223,7 @@
 
       <section id="prospective">
         <h2>Prospective resources</h2>
+       
         [%- content[0].getHtml("resources-gas.prospective-resources") %]
 
         <div class="table">
@@ -231,7 +232,7 @@
             <div class="th" style="width: 20%">Basin Name</div>
             <div class="th" style="width: 20%">Resource type</div>
             <div class="th" style="width: 40%">
-              <span>Estimated gas-in-place (TCF)</span>
+              <span class="tcf">Estimated gas-in-place (TCF)</span>
               <span class="th number">P90</span>
               <span class="th number">P50</span>
               <span class="th number">P10</span>
@@ -239,10 +240,16 @@
             </div>
             <div class="th" style="width: 20%">Prospective Recoverable Gas (5% of P50) (TCF/Bbls)</div>
           </div>
-          [% var basins = content[0].getGroup('resources-gas.basin').toArray() %] [% basins.forEach(function(basin) { %] [% var row = basin.data %]
+          [% var basin_name %]
+          [% var basins = content[0].getGroup('resources-gas.basin').toArray() %] 
+          [% basins.forEach(function(basin) { %] 
+          [% var row = basin.data %]
+          [% name = (row['basin-name'].value == basin_name) ? "" :  row['basin-name'].value %]
+
+
           <div class="tr">
             <div class="td basin-name" data-field="Basin Name">
-              [%= row['basin-name'].value -%] </div>
+              [%= name -%] </div>
             <div class="td resource-type" data-field="Resource type">
               [%= row['types'].value -%]<span> Resources</span></div>
             <div class="td" style="width: 40%">
@@ -257,10 +264,9 @@
             </div>
             <div class="td number" data-field="5% of P50" style="width: 20%">
               [%= row['5% of P50'].value -%]</div>
-            <div class="td " data-field="">
-
-            </div>
           </div>
+
+          [% basin_name = row['basin-name'].value %]
           [% }) %]
 
         </div>
