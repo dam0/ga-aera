@@ -54,6 +54,9 @@
       width: 70%;
       margin: 0 auto;
     }
+    .modal-dialog{
+      margin-top: 25%;
+    }
   </style>
 
   <script src='//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
@@ -72,6 +75,32 @@
       $('body').scrollspy({
         target: ".navbar"
       });
+      $(".carousel-inner div.item:first-child").addClass("active")
+      /* activate the carousel */
+      $("#modal-carousel").carousel({interval:false});
+
+      /* change modal title when slide changes */
+      $("#modal-carousel").on("slid.bs.carousel", function () {
+        $(".modal-title").html($(this).find(".active img").attr("title"));
+      })
+
+      /* when clicking a thumbnail */
+      $(".image").click(function(){
+          // var content = $(".carousel-inner");
+          // var title = $(".modal-title");
+        
+          // content.empty();  
+          // title.empty();
+        
+          // var id = this.id;  
+        
+          // active.addClass("active");
+          // title.html(active.find("img").attr("title"));
+
+          // show the modal
+          $("#modal-gallery").modal("show");
+      });
+
     });
   </script>
 
@@ -133,18 +162,53 @@
 
       <div class="gallery">
 
-        [% var gallery = content[0].getGroup('resources-gas.images').toArray() %] [% gallery.forEach(function(image) { %] [% var linkLarge = image.getImageView("image","large").url %]
+        [% var gallery = content[0].getGroup('resources-gas.images').toArray() %] 
+        [% gallery.forEach(function(image) { %] 
+        [% var linkLarge = image.getImageView("image","large").url %]
 
         <div class="image">
-          <a href="[%- linkLarge  %]" target="_blank" title="Open larger image view">
+          <!--<a href="[%- linkLarge  %]" target="_blank" title="Open larger image view">-->
             [%- image.getImageView("image","small").asHtml()  %]
-            </a>
+            <!--</a>-->
           <div class="caption">[%- image.getFirstParagraph().text %]</div>
         </div>
         [% }) %]
       </div>
 
+      <div class="modal" id="modal-gallery" role="dialog">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <!--<div class="modal-header">
+                <button class="close" type="button" data-dismiss="modal">×</button>
+                <h3 class="modal-title"></h3>
+            </div>-->
+            <div class="modal-body">
+                <div id="modal-carousel" class="carousel">
+        
+                  <div class="carousel-inner"> 
+                    [% var gallery = content[0].getGroup('resources-gas.images').toArray() %] 
+                    [% gallery.forEach(function(image, i) { %] 
+                    <div class="item" > 
+                        [%- image.getImage("image","large").asHtml()  %]
+                        <caption>[%- image.get('image-caption').asText() %]</caption>
+                    </div>
+                    [% }) %]
+                  </div>
+                  
+                  <a class="carousel-control left" href="#modal-carousel" data-slide="prev"><i class="glyphicon glyphicon-chevron-left"></i></a>
+                  <a class="carousel-control right" href="#modal-carousel" data-slide="next"><i class="glyphicon glyphicon-chevron-right"></i></a>
+                  
+                </div>
+            </div>
+            <!--<div class="modal-footer">
+                <button class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>-->
+          </div>
+        </div>
+      </div>
+
     </section>
+
 
     <section id="prospective">
       <h2>Prospective resources</h2>
@@ -197,6 +261,7 @@
     <section id="world">
 
       <h2>World resources</h2>
+
       [%- content[0].getHtml("resources-gas.world-resources") %]
 
     </section>
@@ -206,8 +271,9 @@
       <h2>References</h2>
       <ul>
         
-        [% var references = content[0].getGroup('resources-gas.reference').toArray() %] [% references.forEach(function(ref) { %]
-        <li>[%- ref.asHtml() %]</li>
+        [% var references = content[0].getGroup('resources-gas.reference').toArray() %] 
+        [% references.forEach(function(ref) { %]
+          <li>[%- ref.asHtml() %]</li>
         [% }) %]
 
       </ul>
