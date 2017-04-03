@@ -1,90 +1,180 @@
-body{
-  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  font-weight: 400;
+body {
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-weight: 400;
 }
-h1, h2, h3{
-  font-weight: 300;
+
+h1,
+h2,
+h3 {
+    font-weight: 300;
 }
-p{
-  font-size: small;
-  font-weight: normal;
-  line-height: 20px;
+
+p {
+    font-size: small;
+    font-weight: normal;
+    line-height: 20px;
 }
+
 aside {
-    float:right;
+    float: right;
     padding-left: 2em;
     width: 250px;
 }
-aside img{
+
+aside img {
     width: 200px;
-    height:200px;
+    height: 200px;
 }
-aside p{
+
+aside p {
     font-size: smaller;
 }
-.image{
-  width: 250px;
-  height:auto;
-  margin: 1em;
-  flex: auto;
 
-}
-.gallery{
-  text-align: center;
-  display: flex;
-}
-main{
-  padding-bottom:5em;
-}
-article > section{
-  clear: both;
-  padding-top: 5em;
+.image {
+    width: 250px;
+    height: auto;
+    margin: 1em;
+    flex: auto;
 }
 
-.table    { display: table;  empty-cells: hide; border-bottom: 1px solid #ddd; }
-.tr       { display: table-row;
-border-bottom: 1px solid #ddd; }
-.thead    { display: table-header-group }
-.tbody    { display: table-row-group }
-.tfoot    { display: table-footer-group }
-.col      { display: table-column }
-.colgroup { display: table-column-group }
-.td, .th   { 
-  display: table-cell;
-  padding: 8px;
-line-height: 1.42857143;
-vertical-align: top;
-border-top: 1px solid #ddd;
-  }
-.td .td   { 
-border-top: none;
+.gallery {
+    text-align: center;
+    display: flex;
 }
-.th .number{
+
+main {
+    padding-bottom: 5em;
+}
+
+article>section {
+    clear: both;
+    padding-top: 5em;
+}
+
+.table {
+    display: table;
+    empty-cells: hide;
+    border-bottom: 1px solid #ddd;
+}
+
+.tr {
+    display: table-row;
+    border-bottom: 1px solid #ddd;
+}
+
+.tr:nth-child(odd) {
+    background: #efefef;
+}
+
+.thead {
+    display: table-header-group
+}
+
+.tbody {
+    display: table-row-group
+}
+
+.tfoot {
+    display: table-footer-group
+}
+
+.col {
+    display: table-column
+}
+
+.colgroup {
+    display: table-column-group
+}
+
+.td,
+.th {
+    display: table-cell;
+    padding: .4em;
+    line-height: 1.42857143;
+}
+
+.tr>.td:first-child {
+    background: #006983;
+    color: white;
+    padding-left: 1em;
+    border-top: 1px solid white;
+}
+
+.th>hr {
+    margin: .5em 0 0 0;
+}
+
+.td .td {
+    border-top: none;
+}
+
+.th>span,
+.td>span {
+    display: inline-block;
+    text-align: center;
+}
+
+#summary>.table .th>span,
+#summary>.table .td>span {
+    width: 45%;
+}
+
+#prospective>.table .th>span,
+#prospective>.table .td>span {
+    width: 24%;
+}
+
+.th .number {
     padding-top: 1em;
     border-top: none;
-} 
-/*.caption  { display: table-caption }*/
-.th{
-  background-color: #006983;
-  color: white;
 }
-.basin-name{
-  width: 20%;
+
+.table-caption {
+    display: table-caption;
+    text-align: center;
+    margin: 1em;
+    font-weight: bold;
 }
-.resource-type{
-  width: 20%;
+
+.th {
+    background-color: #006983;
+    color: white;
 }
-.number{
-  width: 5%;
-  text-align: center;
-} 
-span.number{
-  padding-top: 0;
-  border-bottom: none;
+
+.excel:before {
+    width: 2em;
+    height: 2em;
+    background-size: 2em 2em;
+    display: inline-block;
+    content: "";
+    margin: 0 1em;
+    background-image: url('assets/excel_logo.svg');
+    vertical-align: middle;
 }
-#references li{
-  margin-left: -2em;
+
+.basin-name {
+    width: 20%;
 }
+
+
+/*.resource-type {
+    width: 20%;
+}*/
+
+.number {
+    width: 5%;
+    text-align: center;
+}
+
+span.number {
+    padding-top: 0;
+    border-bottom: none;
+}
+
+#references li {
+    margin-left: -2em;
+}
+
 
 /*
 .table{
@@ -133,17 +223,19 @@ table{
 }
 section[data-field="Basin Name"]{
   /*display: none;*/
-  background: #006983;
-  color: white;
-}
-section[data-field="Resource type"]{
-  width: 10%;
-}
-.row section.tcf{
-  width: 50%;
-}
-.caption{
-  font-style: italic;
-  font-size: smaller;
 
-}*/
+background: #006983;
+color: white;
+
+}
+section[data-field="Resource type"] {
+    width: 10%;
+}
+.row section.tcf {
+    width: 50%;
+}
+.caption {
+    font-style: italic;
+    font-size: smaller;
+}
+*/

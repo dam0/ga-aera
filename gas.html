@@ -2,341 +2,374 @@
 <html>
 
 <head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>GA AERA Prismic project</title>
-  <meta name="description" content="">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="prismic-api" content="https://ga-aera.prismic.io/api">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>GA AERA Prismic project</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="prismic-api" content="https://ga-aera.prismic.io/api">
 
-  <meta name="prismic-oauth-client-id" content="WLYdACYAAIIAx5fm">
+    <meta name="prismic-oauth-client-id" content="WLYdACYAAIIAx5fm">
 
-  <link rel='stylesheet prefetch' href='//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css'>
-  <link href="ga-aera-styles.css" rel="stylesheet">
+    <link rel='stylesheet prefetch' href='//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css'>
+    <link href="ga-aera-styles.css" rel="stylesheet">
 
-  <style>
-    html,
-    body {
-      margin: 0;
-      padding: 0;
-    }
-    
-    .affix {
-      top: 0;
-      width: 100%;
-      z-index: 9999 !important;
-    }
-    /*article>section {
+    <style>
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+        }
+        
+        .affix {
+            top: 0;
+            width: 100%;
+            z-index: 9999 !important;
+        }
+        /*article>section {
       padding-top: 50px;
     }*/
-    
-    .navbar {
-      border-radius: 0;
-      padding-left: 4em;
-    }
-    
-    .gas-banner {
-      margin: 0;
-      padding: 0;
-      background-image: url('assets/gas_banner.png');
-      background-position: top left;
-      background-size: cover;
-      height: 140px;
-    }
-    
-    .banner-title {
-      color: white;
-      font-size: xx-large;
-      padding: 1.5em 2em;
-    }
-    
-    article {
-      width: 70%;
-      margin: 0 auto;
-    }
-    
-    .modal-dialog {
-      margin-top: 25%;
-    }
-    
-    .carousel-control.right {
-      right: -100px;
-    }
-    
-    .carousel-control.left {
-      left: -100px;
-    }
-  </style>
-
-  <script src='//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
-  <script src='//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js'></script>
-  <script src="js/ejs-1.0.js"></script>
-  <script src="js/prismic.io.min.js"></script>
-  <script src="js/prismic.io-singlepage-1.0.0.js"></script>
-
-  <script>
-    $(document).on('prismic:rendered', function() {
-      $('.navbar').affix({
-        offset: {
-          top: 50
+        
+        .navbar {
+            border-radius: 0;
+            padding-left: 4em;
         }
-      });
-      $('body').scrollspy({
-        target: ".navbar"
-      });
-      $(".carousel-inner div.item:first-child").addClass("active");
-      $("#modal-carousel").carousel({
-        interval: false
-      });
+        
+        .gas-banner {
+            margin: 0;
+            padding: 0;
+            background-image: url('assets/gas_banner.png');
+            background-position: top left;
+            background-size: cover;
+            height: 140px;
+        }
+        
+        .banner-title {
+            color: white;
+            font-size: xx-large;
+            padding: 1.5em 2em;
+        }
+        
+        article {
+            width: 70%;
+            margin: 0 auto;
+        }
+        
+        .modal-dialog {
+            margin-top: 25%;
+        }
+        
+        .carousel-control.right {
+            right: -100px;
+        }
+        
+        .carousel-control.left {
+            left: -100px;
+        }
+    </style>
 
-      /* change modal title when slide changes */
-      $("#modal-carousel").on("slid.bs.carousel", function() {
-        $(".modal-title").html($(this).find(".active img").attr("title"));
-      })
+    <script src='//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+    <script src='//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js'></script>
+    <script src="js/ejs-1.0.js"></script>
+    <script src="js/prismic.io.min.js"></script>
+    <script src="js/prismic.io-singlepage-1.0.0.js"></script>
 
-      /* when clicking a thumbnail */
-      $(".image").click(function() {
-        // var content = $(".carousel-inner");
-        // var title = $(".modal-title");
+    <script>
+        $(document).on('prismic:rendered', function() {
+            $('.navbar').affix({
+                offset: {
+                    top: 50
+                }
+            });
+            $('body').scrollspy({
+                target: ".navbar"
+            });
+            $(".carousel-inner div.item:first-child").addClass("active");
+            $("#modal-carousel").carousel({
+                interval: false
+            });
 
-        // content.empty();  
-        // title.empty();
+            /* change modal title when slide changes */
+            $("#modal-carousel").on("slid.bs.carousel", function() {
+                $(".modal-title").html($(this).find(".active img").attr("title"));
+            })
 
-        // var id = this.id;  
+            /* when clicking a thumbnail */
+            $(".image").click(function() {
+                // var content = $(".carousel-inner");
+                // var title = $(".modal-title");
 
-        // active.addClass("active");
-        // title.html(active.find("img").attr("title"));
+                // content.empty();  
+                // title.empty();
 
-        // show the modal
-        $("#modal-gallery").modal("show");
-      });
+                // var id = this.id;  
 
-    })  </script>
+                // active.addClass("active");
+                // title.html(active.find("img").attr("title"));
 
-  <script type="text/prismic-query" data-binding="content">
-    [ [:d = any(document.type, ["resources-gas"])] ]
-  </script>
+                // show the modal
+                $("#modal-gallery").modal("show");
+            });
+
+        })
+    </script>
+
+    <script type="text/prismic-query" data-binding="content">
+        [ [:d = any(document.type, ["resources-gas"])] ]
+    </script>
 
 </head>
 
 <body>
 
-  <header class="gas-banner">
-    <div class="banner-title">Australian Energy Resources Assessment</div>
-  </header>
+    <header class="gas-banner">
+        <div class="banner-title">Australian Energy Resources Assessment</div>
+    </header>
 
-  <nav class="navbar navbar-inverse">
-    <div class="container-fluid">
-      <div class="navbar-header">
-        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#menu">
+    <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#menu">
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
           <span class="icon-bar"></span> 
           <span class="icon-bar"></span> 
           <span class="icon-bar"></span>                        
       </button>
-        <a class="navbar-brand" href="#">GAS</a>
-      </div>
-      <div>
-        <div class="collapse navbar-collapse" id="menu">
-          <ul class="nav navbar-nav">
-            <li><a href="#summary">Summary</a></li>
-            <li><a href="#identified">Identified resources</a></li>
-            <li><a href="#prospective">Prospective resources</a></li>
-            <li><a href="#world">World resources</a></li>
-            <li><a href="#references">References</a></li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </nav>
-  <main>
-    <article>
-      <section id="summary">
-
-        <h2>Summary</h2>
-
-        <aside>
-          [%- content[0].getHtml('resources-gas.summary-image-with-caption', 'thumbnail') %]
-        </aside>
-
-        <div class="table">
-          <caption></caption>
-          <div class="tr">
-            <div class="th"> Resource category </div>
-            <div class="th"> Conventional gas
-              <span class="th">PJ</span>
-              <span class="th">TcF</span></div>
-            <div class="th"> Coal seam gas
-              <span class="th">PJ</span>
-              <span class="th">TcF</span>
+                <a class="navbar-brand" href="#">GAS</a>
             </div>
-            <div class="th">Tight gas
-              <span class="th">PJ</span>
-              <span class="th">TcF</span> </div>
-            <div class="th"> Shale gas
-              <span class="th">PJ</span>
-              <span class="th">TcF</span></div>
-            <div class="th">Total gas
-              <span class="th">PJ</span>
-              <span class="th">TcF</span></div>
-          </div>
-          [% var reserves = content[0].getGroup('resources-gas.reserves').toArray() %] 
-          [% console.log( content[0]) %]
-          [% reserves.forEach(function(category) { %]
-          [% var row = category.data %]
-
-          <div class="tr">
-            <div class="td"> </div>
-            <div class="td"></div>
-            <div class="td"></div>
-            <div class="td"></div>
-            <div class="td"></div>
-            <div class="td"></div>
-            <div class="td"></div>
-            <div class="td"></div>
-            <div class="td"></div>
-            <div class="td"></div>
-            <div class="td"></div>
-          </div>
-
-          [% }) %]
-
+            <div>
+                <div class="collapse navbar-collapse" id="menu">
+                    <ul class="nav navbar-nav">
+                        <li><a href="#summary">Summary</a></li>
+                        <li><a href="#identified">Identified resources</a></li>
+                        <li><a href="#prospective">Prospective resources</a></li>
+                        <li><a href="#world">World resources</a></li>
+                        <li><a href="#references">References</a></li>
+                    </ul>
+                </div>
+            </div>
         </div>
+    </nav>
+    <main>
+        <article>
+            <section id="summary">
 
-        [%- content[0].getHtml("resources-gas.summary-content") %] [%- content[0].getHtml("resources-gas.chapter-dataset") %]
+                <h2>Summary</h2>
 
-      </section>
+                <aside>
+                    [%- content[0].getHtml('resources-gas.summary-image-with-caption', 'thumbnail') %]
+                </aside>
 
-      <section id="identified">
+                [%- content[0].getHtml("resources-gas.summary-content") %]
 
-        <h2>Identified resources</h2>
-        [%- content[0].getHtml("resources-gas.identified-resources") %]
-
-        <div class="gallery">
-
-          [% var gallery = content[0].getGroup('resources-gas.images').toArray() %] [% gallery.forEach(function(image) { %] [% var
-          linkLarge = image.getImageView("image","large").url %]
-
-          <div class="image">
-            <!--<a href="[%- linkLarge  %]" target="_blank" title="Open larger image view">-->
-            [%- image.getImageView("image","small").asHtml() %]
-            <!--</a>-->
-            <div class="caption">[%- image.getFirstParagraph().text %]</div>
-          </div>
-          [% }) %]
-        </div>
-
-        <div class="modal" id="modal-gallery" role="dialog">
-          <div class="modal-dialog">
-            <a class="carousel-control left" href="#modal-carousel" data-slide="prev"><i class="glyphicon glyphicon-chevron-left"></i></a>
-            <div class="modal-content">
-              <div class="modal-body">
-                <div id="modal-carousel" class="carousel">
-                  <div class="carousel-inner">
-
-                    [% var gallery = content[0].getGroup('resources-gas.images').toArray() %] [% gallery.forEach(function(image, i) { %]
-
-                    <div class="item">
-
-                      [%- image.getImage("image","large").asHtml() %]
-
-                      <caption>
-
-                        [%- image.get('image-caption').asText() %]
-
-                      </caption>
+                <div class="table">
+                    <div class="table-caption">Australia's total identified and prospective gas resources</div>
+                    <div class="tr">
+                        <div class="th"> Resource category </div>
+                        <div class="th"> Conventional gas
+                            <hr/>
+                            <span class="th">PJ</span>
+                            <span class="th">TcF</span></div>
+                        <div class="th"> Coal seam gas
+                            <hr/>
+                            <span class="th">PJ</span>
+                            <span class="th">TcF</span>
+                        </div>
+                        <div class="th">Tight gas
+                            <hr/>
+                            <span class="th">PJ</span>
+                            <span class="th">TcF</span> </div>
+                        <div class="th"> Shale gas
+                            <hr/>
+                            <span class="th">PJ</span>
+                            <span class="th">TcF</span></div>
+                        <div class="th">Total gas
+                            <hr/>
+                            <span class="th">PJ</span>
+                            <span class="th">TcF</span></div>
+                    </div>
+                    [% var reserves = content[0].getGroup('resources-gas.reserves').toArray() %]
+                    <div class="tr">
+                        <div class="td">Reserves</div>
+                        [% reserves.forEach(function(types) { %] [% var name = types.getText('categories').replace(/\s/g,'-').toLowerCase() %]
+                        <div class="td [%- name %]">
+                            <span class="td">[%- Number(types.getNumber('pj')).toLocaleString('en') %]</span>
+                            <span class="td">[%- Number(types.getNumber('tcf')).toLocaleString('en') %]</span>
+                        </div>
+                        [% }) %]
                     </div>
 
-                    [% }) %]
+                    [% var reserves = content[0].getGroup('resources-gas.contingent').toArray() %]
+                    <div class="tr">
+                        <div class="td">Contingent resources</div>
+                        [% reserves.forEach(function(types) { %] [% var name = types.getText('categories').replace(/\s/g,'-').toLowerCase() %]
+                        <div class="td [%- name %]">
+                            <span class="td">[%- Number(types.getNumber('pj')).toLocaleString('en') %]</span>
+                            <span class="td">[%- Number(types.getNumber('tcf')).toLocaleString('en') %]</span>
+                        </div>
+                        [% }) %]
+                    </div>
 
-                  </div>
+                    [% var reserves = content[0].getGroup('resources-gas.identified').toArray() %]
+                    <div class="tr">
+                        <div class="td">Identified resources</div>
+                        [% reserves.forEach(function(types) { %] [% var name = types.getText('categories').replace(/\s/g,'-').toLowerCase() %]
+                        <div class="td [%- name %]">
+                            <span class="td">[%- Number(types.getNumber('pj')).toLocaleString('en') %]</span>
+                            <span class="td">[%- Number(types.getNumber('tcf')).toLocaleString('en') %]</span>
+                        </div>
+                        [% }) %]
+                    </div>
+
+                    [% var reserves = content[0].getGroup('resources-gas.prospective').toArray() %]
+                    <div class="tr">
+                        <div class="td">Prospective resources</div>
+                        [% reserves.forEach(function(types) { %] [% var name = types.getText('categories').replace(/\s/g,'-').toLowerCase() %]
+                        <div class="td [%- name %]">
+                            <span class="td">[%- Number(types.getNumber('pj')).toLocaleString('en') %]</span>
+                            <span class="td">[%- Number(types.getNumber('tcf')).toLocaleString('en') %]</span>
+                        </div>
+                        [% }) %]
+                    </div>
+
+
                 </div>
-              </div>
-              <!--<div class="modal-footer">
+                <a href="[%- content[0].get('resources-gas.chapter-dataset').url() %]" class="excel">
+                  Download data
+                </a>
+
+            </section>
+
+            <section id="identified">
+
+                <h2>Identified resources</h2>
+                [%- content[0].getHtml("resources-gas.identified-resources") %]
+
+                <div class="gallery">
+
+                    [% var gallery = content[0].getGroup('resources-gas.images').toArray() %] [% gallery.forEach(function(image) { %] [% var linkLarge = image.getImageView("image","large").url %]
+
+                    <div class="image">
+                        <!--<a href="[%- linkLarge  %]" target="_blank" title="Open larger image view">-->
+                        [%- image.getImageView("image","small").asHtml() %]
+                        <!--</a>-->
+                        <div class="caption">[%- image.getFirstParagraph().text %]</div>
+                    </div>
+                    [% }) %]
+                </div>
+
+                <div class="modal" id="modal-gallery" role="dialog">
+                    <div class="modal-dialog">
+                        <a class="carousel-control left" href="#modal-carousel" data-slide="prev"><i class="glyphicon glyphicon-chevron-left"></i></a>
+                        <div class="modal-content">
+                            <div class="modal-body">
+                                <div id="modal-carousel" class="carousel">
+                                    <div class="carousel-inner">
+
+                                        [% var gallery = content[0].getGroup('resources-gas.images').toArray() %] [% gallery.forEach(function(image, i) { %]
+
+                                        <div class="item">
+
+                                            [%- image.getImage("image","large").asHtml() %]
+
+                                            <caption>
+
+                                                [%- image.get('image-caption').asText() %]
+
+                                            </caption>
+                                        </div>
+
+                                        [% }) %]
+
+                                    </div>
+                                </div>
+                            </div>
+                            <!--<div class="modal-footer">
                 <button class="btn btn-default" data-dismiss="modal">Close</button>
             </div>-->
-            </div>
-            <a class="carousel-control right" href="#modal-carousel" data-slide="next"><i class="glyphicon glyphicon-chevron-right"></i></a>
+                        </div>
+                        <a class="carousel-control right" href="#modal-carousel" data-slide="next"><i class="glyphicon glyphicon-chevron-right"></i></a>
 
-          </div>
-        </div>
+                    </div>
+                </div>
 
-      </section>
-
-
-      <section id="prospective">
-        <h2>Prospective resources</h2>
-
-        [%- content[0].getHtml("resources-gas.prospective-resources") %]
-
-        <div class="table">
-          <caption></caption>
-          <div class="tr">
-            <div class="th" style="width: 20%">Basin Name</div>
-            <div class="th" style="width: 20%">Resource type</div>
-            <div class="th" style="width: 40%">
-              <span class="tcf">Estimated gas-in-place (TCF)</span>
-              <span class="th number">P90</span>
-              <span class="th number">P50</span>
-              <span class="th number">P10</span>
-              <span class="th number">Mean</span>
-            </div>
-            <div class="th" style="width: 20%">Prospective Recoverable Gas (5% of P50) (TCF/Bbls)</div>
-          </div>
-          [% var basin_name %] [% var basins = content[0].getGroup('resources-gas.basin').toArray() %] [% basins.forEach(function(basin)
-          { %] [% var row = basin.data %] [% name = (row['basin-name'].value == basin_name) ? "" : row['basin-name'].value
-          %]
+            </section>
 
 
-          <div class="tr">
-            <div class="td basin-name" data-field="Basin Name">
-              [%= name -%] </div>
-            <div class="td resource-type" data-field="Resource type">
-              [%= row['types'].value -%]<span> Resources</span></div>
-            <div class="td" style="width: 40%">
-              <span class="td number" data-field="P90">
-                [%= row['P90'].value -%]</span>
-              <span class="td number" data-field="P50">
-                [%= row['P50'].value -%]</span>
-              <span class="td number" data-field="P10">
-                [%= row['P10'].value -%]</span>
-              <span class="td number" data-field="Mean">
-                [%= row['Mean'].value -%]</span>
-            </div>
-            <div class="td number" data-field="5% of P50" style="width: 20%">
-              [%= row['5% of P50'].value -%]</div>
-          </div>
+            <section id="prospective">
+                <h2>Prospective resources</h2>
 
-          [% basin_name = row['basin-name'].value %] [% }) %]
+                [%- content[0].getHtml("resources-gas.prospective-resources") %]
 
-        </div>
+                <div class="table">
+                    <caption></caption>
+                    <div class="tr">
+                        <div class="th" style="width: 20%">Basin Name</div>
+                        <div class="th" style="width: 20%">Resource type</div>
+                        <div class="th" style="width: 40%">Estimated gas-in-place (TCF)<br/>
+                            <span class="th number">P90</span>
+                            <span class="th number">P50</span>
+                            <span class="th number">P10</span>
+                            <span class="th number">Mean</span>
+                        </div>
+                        <div class="th" style="width: 20%">Prospective Recoverable Gas (5% of P50) (TCF/Bbls)</div>
+                    </div>
 
-      </section>
+                    [% var basin_name %] [% var basins = content[0].getGroup('resources-gas.basin').toArray() %] [% basins.forEach(function(basin) { %] [% var row = basin.data %] [% name = (row['basin-name'].value == basin_name) ? "" : row['basin-name'].value %]
 
-      <section id="world">
+                    <div class="tr">
+                        <div class="td basin-name" data-field="Basin Name">
+                            [%= name -%] </div>
+                        <div class="td resource-type" data-field="Resource type">
+                            [%= row['types'].value -%] <span> Resources</span></div>
+                        <div class="td" style="width: 40%">
+                            <span class="td number" data-field="P90">
+                               [%= row['P90'].value -%]
+                               </span>
+                            <span class="td number" data-field="P50">
+                              [%= row['P50'].value -%]
+                              </span>
+                            <span class="td number" data-field="P10">
+                              [%= row['P10'].value -%]
+                              </span>
+                            <span class="td number" data-field="Mean">
+                              [%= row['Mean'].value -%]
+                              </span>
+                        </div>
+                        <div class="td number" data-field="5% of P50" style="width: 20%">
+                            [%= row['5% of P50'].value -%]</div>
+                    </div>
 
-        <h2>World resources</h2>
+                    [% basin_name = row['basin-name'].value %] [% }) %]
 
-        [%- content[0].getHtml("resources-gas.world-resources") %]
+                </div>
 
-      </section>
+            </section>
 
-      <section id="references">
+            <section id="world">
 
-        <h2>References</h2>
-        <ul>
+                <h2>World resources</h2>
 
-          [% var references = content[0].getGroup('resources-gas.reference').toArray() %] [% references.forEach(function(ref) { %]
-          <li>[%- ref.asHtml() %]</li>
-          [% }) %]
+                [%- content[0].getHtml("resources-gas.world-resources") %]
 
-        </ul>
-      </section>
+            </section>
 
-    </article>
+            <section id="references">
 
-  </main>
+                <h2>References</h2>
+                <ul>
+
+                    [% var references = content[0].getGroup('resources-gas.reference').toArray() %] [% references.forEach(function(ref) { %]
+                    <li>[%- ref.asHtml() %]</li>
+                    [% }) %]
+
+                </ul>
+            </section>
+
+        </article>
+
+    </main>
 </body>
 
 </html>
