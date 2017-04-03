@@ -44,7 +44,7 @@
     </script>
 
     <script type="text/prismic-query" data-binding="content">
-        [ [:d = any(document.type, ["resources-coal"])] ]
+        [ [:d = any(document.type, ["resources-uranium-thorium"])] ]
     </script>
 </head>
 
@@ -83,25 +83,24 @@
                 <h2>Summary</h2>
                 <aside>
 
-                    [%- content[0].getHtml('resources-coal.summary-image-with-caption', 'preview') %]
+                    [%- content[0].getHtml('resources-uranium-thorium.summary-image-with-caption', 'preview') %]
 
                 </aside>
 
-                [%- content[0].getHtml("resources-coal.summary-content") %]
-
-                <a href="[%- content[0].get('resources-coal.chapter-dataset').url() %]" class="excel">
+                [%- content[0].getHtml("resources-uranium-thorium.summary-content") %] [% if(content[0].get('resources-uranium-thorium.chapter-dataset')){ %]
+                <a href="[%- content[0].get('resources-uranium-thorium.chapter-dataset').url() %]" class="excel">
                   Download data
-                </a>
+                </a> [% } %]
 
             </section>
             <section id="identified">
                 <h2>Identified resources</h2>
 
-                [%- content[0].getHtml("resources-coal.black-coal") %]
+                [%- content[0].getHtml("resources-uranium-thorium.black-coal") %]
 
                 <div class="gallery">
 
-                    [% var gallery = content[0].getGroup('resources-coal.images').toArray() %] [% gallery.forEach(function(image) { %]
+                    [% var gallery = content[0].getGroup('resources-uranium-thorium.images').toArray() %] [% gallery.forEach(function(image) { %]
 
                     <div class="image">
                         [%- image.getImageView("image","preview").asHtml() %]
@@ -119,7 +118,7 @@
                                 <div id="modal-carousel" class="carousel">
                                     <div class="carousel-inner">
 
-                                        [% var gallery = content[0].getGroup('resources-coal.images').toArray() %] [% gallery.forEach(function(image, i) { %]
+                                        [% var gallery = content[0].getGroup('resources-uranium-thorium.images').toArray() %] [% gallery.forEach(function(image, i) { %]
 
                                         <div class="item">
                                             [%- image.getImage("image","main").asHtml() %]
@@ -139,27 +138,27 @@
                 </div>
 
 
-                [%- content[0].getHtml("resources-coal.brown-coal") %]
+                [%- content[0].getHtml("resources-uranium-thorium.brown-coal") %]
 
 
             </section>
             <section id="prospective">
                 <h2>Prospective resources</h2>
 
-                [%- content[0].getHtml("resources-coal.prospective-resources") %]
+                [%- content[0].getHtml("resources-uranium-thorium.prospective-resources") %]
 
             </section>
             <section id="world">
                 <h2>World resources</h2>
 
-                [%- content[0].getHtml("resources-coal.world-resources") %]
+                [%- content[0].getHtml("resources-uranium-thorium.world-resources") %]
 
             </section>
             <section id="references">
                 <h2>References</h2>
                 <ul>
 
-                    [% var references = content[0].getGroup('resources-coal.reference').toArray() %] [% references.forEach(function(ref) { %]
+                    [% var references = content[0].getGroup('resources-uranium-thorium.reference').toArray() %] [% references.forEach(function(ref) { %]
                     <li>[%- ref.asHtml() %]</li>
                     [% }) %]
 

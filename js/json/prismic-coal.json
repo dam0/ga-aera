@@ -1,0 +1,150 @@
+{
+    "Main": {
+        "uid": {
+            "type": "UID",
+            "config": {
+                "label": "UID",
+                "placeholder": "UID"
+            }
+        },
+        "resource_name": {
+            "type": "StructuredText",
+            "config": {
+                "single": "heading1",
+                "label": "Page heading",
+                "placeholder": "Heading"
+            }
+        }
+    },
+    "Summary": {
+        "summary-content": {
+            "type": "StructuredText",
+            "config": {
+                "multi": "paragraph, preformatted, heading3, heading4, heading5, heading6, strong, em, hyperlink, image, embed, list-item, o-list-item",
+                "label": "Summary content",
+                "placeholder": "Enter Summary content"
+            }
+        },
+        "summary-image-with-caption": {
+            "type": "Group",
+            "fieldset": "Summary image and caption",
+            "config": {
+                "repeat": false,
+                "fields": {
+                    "summary-image": {
+                        "type": "Image",
+                        "config": {
+                            "constraint": {
+                                "width": 800,
+                                "height": 800
+                            },
+                            "thumbnails": [{
+                                "name": "preview",
+                                "width": "200",
+                                "height": "200"
+                            }]
+                        }
+                    },
+                    "summary-image-caption": {
+                        "type": "StructuredText",
+                        "config": {
+                            "multi": "paragraph, em",
+                            "label": "Image caption",
+                            "placeholder": "Enter  Image caption ..."
+                        }
+                    }
+                }
+            }
+        },
+
+        "chapter-dataset": {
+            "type": "Slices",
+            "config": {
+                "choices": {
+                    "datafile": {
+                        "type": "Link",
+                        "config": {
+                            "label": "Chapter Dataset",
+                            "placeholder": "attach a dataset for the chapter"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "Identified resources": {
+        "identified-resources": {
+            "type": "StructuredText",
+            "config": {
+                "multi": "paragraph, preformatted, heading3, heading4, heading5, heading6, strong, em, hyperlink, image, embed, list-item, o-list-item, o-list-item",
+                "placeholder": "Enter  content..."
+            }
+        },
+        "images": {
+            "config": {
+                "repeat": true,
+                "fields": {
+                    "image": {
+                        "type": "Image",
+                        "config": {
+                            "thumbnails": [{
+                                "name": "preview",
+                                "width": "200",
+                                "height": "200"
+                            }]
+                        }
+                    },
+                    "image-caption": {
+                        "type": "StructuredText",
+                        "config": {
+                            "single": "p",
+                            "label": "caption",
+                            "placeholder": "Enter  caption ..."
+                        }
+                    }
+                }
+            },
+            "type": "Group",
+            "fieldset": "Images"
+        }
+    },
+    "Prospective resources": {
+        "prospective-resources": {
+            "type": "StructuredText",
+            "config": {
+                "multi": "paragraph, preformatted, heading3, heading4, heading5, heading6, strong, em, hyperlink, image, embed, list-item, o-list-item",
+                "label": "Prospective resources",
+                "placeholder": "Enter Prospective resources content..."
+            }
+        }
+    },
+    "World resources": {
+        "world-resources": {
+            "type": "StructuredText",
+            "config": {
+                "multi": "paragraph, preformatted, heading3, heading4, heading5, heading6, strong, em, hyperlink, image, list-item, o-list-item",
+                "label": "World resources",
+                "placeholder": "Enter World resources content..."
+            }
+        }
+    },
+    "References": {
+        "reference": {
+            "type": "Group",
+            "config": {
+                "repeat": true,
+                "fields": {
+                    "attribution": {
+                        "type": "StructuredText",
+                        "config": {
+                            "single": "hyperlink",
+                            "label": "attribution",
+                            "placeholder": "Enter text..."
+                        }
+                    }
+                },
+                "label": "Reference"
+            }
+        }
+    }
+}

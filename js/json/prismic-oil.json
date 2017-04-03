@@ -1,0 +1,205 @@
+{
+  "Main" : {
+    "uid" : {
+      "type" : "UID",
+      "config" : {
+        "label" : "UID",
+        "placeholder" : "UID"
+      }
+    },
+    "resource_name" : {
+      "type" : "StructuredText",
+      "config" : {
+        "single" : "heading1",
+        "label" : "Page heading",
+        "placeholder" : "Heading"
+      }
+    }
+  },
+  "Summary" : {
+    "summary-content" : {
+      "type" : "StructuredText",
+      "config" : {
+        "multi" : "paragraph, preformatted, heading3, heading4, heading5, heading6, strong, em, hyperlink, image, embed, list-item, o-list-item",
+        "label" : "Summary content",
+        "placeholder" : "Enter Summary content"
+      }
+    },
+    "summary-image-with-caption" : {
+      "type" : "Group",
+      "fieldset" : "Summary image and caption",
+      "config" : {
+        "repeat" : false,
+        "fields" : {
+          "summary-image" : {
+            "type" : "Image",
+            "config" : {
+              "constraint" : {
+                "width" : 800,
+                "height" : 800
+              },
+              "thumbnails" : [ {
+                "name" : "preview",
+                "width" : "200",
+                "height" : "200"
+              } ]
+            }
+          },
+          "summary-image-caption" : {
+            "type" : "StructuredText",
+            "config" : {
+              "multi" : "paragraph, em",
+              "label" : "Image caption",
+              "placeholder" : "Enter  Image caption ..."
+            }
+          }
+        }
+      }
+    },
+    "chapter-dataset" : {
+      "type" : "Link",
+      "config" : {
+        "label" : "Chapter Dataset",
+        "placeholder" : "attach a dataset for the chapter"
+      }
+    }
+  },
+  "Identified resources" : {
+    "identified-resources" : {
+      "type" : "StructuredText",
+      "config" : {
+        "multi" : "paragraph, preformatted, heading3, heading4, heading5, heading6, strong, em, hyperlink, image, embed, list-item, o-list-item",
+        "label" : "Identified resources",
+        "placeholder" : "Enter Identified resources content..."
+      }
+    },
+    "images" : {
+      "type" : "Group",
+      "fieldset" : "Images",
+      "config" : {
+        "repeat" : true,
+        "fields" : {
+          "image" : {
+            "type" : "Image",
+            "config" : {
+              "thumbnails" : [ {
+                "name" : "preview",
+                "width" : "200",
+                "height" : "200"
+              } ],
+              "label" : "Image for .."
+            }
+          },
+          "image-caption" : {
+            "type" : "StructuredText",
+            "config" : {
+              "single" : "p",
+              "label" : "caption",
+              "placeholder" : "Enter  caption ..."
+            }
+          }
+        }
+      }
+    }
+  },
+  "Prospective resources" : {
+    "prospective-resources" : {
+      "type" : "StructuredText",
+      "config" : {
+        "multi" : "paragraph, preformatted, heading3, heading4, heading5, heading6, strong, em, hyperlink, image, embed, list-item, o-list-item",
+        "label" : "Prospective resources",
+        "placeholder" : "Enter Prospective resources content..."
+      }
+    },
+    "basin" : {
+      "config" : {
+        "repeat" : true,
+        "fields" : {
+          "basin-name" : {
+            "config" : {
+              "placeholder" : "Enter 'Basin Name'",
+              "label" : "Basin name"
+            },
+            "type" : "Text",
+            "fieldset" : "Basin name"
+          },
+          "types" : {
+            "type" : "Select",
+            "config" : {
+              "options" : [ "Shale", "Tight" ],
+              "label" : "Resource type",
+              "placeholder" : "Select Type.."
+            }
+          },
+          "P90" : {
+            "type" : "Number",
+            "fieldset" : "P90",
+            "config" : {
+              "placeholder" : "Enter P90 Value"
+            }
+          },
+          "P50" : {
+            "type" : "Number",
+            "fieldset" : "P50",
+            "config" : {
+              "placeholder" : "Enter P50 Value"
+            }
+          },
+          "P10" : {
+            "type" : "Number",
+            "fieldset" : "P10",
+            "config" : {
+              "placeholder" : "Enter P10 Value"
+            }
+          },
+          "Mean" : {
+            "type" : "Number",
+            "fieldset" : "Mean",
+            "config" : {
+              "placeholder" : "Enter Mean Value"
+            }
+          },
+          "5% of P50" : {
+            "type" : "Number",
+            "fieldset" : "5% of P50",
+            "config" : {
+              "placeholder" : "Enter '5% of P50' Value"
+            }
+          }
+        },
+        "label" : "Basin resources"
+      },
+      "type" : "Group",
+      "fieldset" : "Basin resources"
+    }
+  },
+  "World resources" : {
+    "world-resources" : {
+      "type" : "StructuredText",
+      "config" : {
+        "multi" : "paragraph, preformatted, heading3, heading4, heading5, heading6, strong, em, hyperlink, image, list-item, o-list-item",
+        "label" : "World resources",
+        "placeholder" : "Enter World resources content..."
+      }
+    }
+  },
+  "References" : {
+    "reference" : {
+      "type" : "Group",
+      "config" : {
+        "repeat" : true,
+        "fields" : {
+          "attribution" : {
+            "type" : "StructuredText",
+            "config" : {
+              "single" : "hyperlink",
+              "label" : "attribution",
+              "placeholder" : "Enter text..."
+            }
+          }
+        },
+        "label" : "Reference"
+      }
+    }
+  }
+}
