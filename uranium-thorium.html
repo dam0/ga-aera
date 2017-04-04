@@ -27,16 +27,21 @@
                     top: 50
                 }
             });
+            
             $('body').scrollspy({
                 target: ".navbar"
             });
+
             $(".carousel-inner div.item:first-child").addClass("active");
-            $("#modal-carousel").carousel({
+            
+            $("#summary-gallery").carousel({
                 interval: false
             });
-            $("#modal-carousel").on("slid.bs.carousel", function() {
-                $(".modal-title").html($(this).find(".active img").attr("title"));
-            })
+
+            $(".summary-image").click(function() {
+                $("#summary-gallery").modal("show");
+            });
+
             $(".image").click(function() {
                 $("#modal-gallery").modal("show");
             });
@@ -81,11 +86,33 @@
         <article>
             <section id="summary">
                 <h2>Summary</h2>
-                <aside>
+                <aside class="summary-image">
 
-                    [%- content[0].getHtml('resources-uranium-thorium.summary-image-with-caption', 'preview') %]
-
+                        [% var images = content[0].getGroup('resources-uranium-thorium.summary-image-with-caption').toArray() %] 
+                        [% images.forEach(function(image) { %] 
+                        [%- image.getImageView('summary-image','preview').asHtml() %]
+                        <div class="summary-caption">
+                            
+                            [%- image.getText('summary-image-caption') %]
+                        </div>
+                        [% }) %]
                 </aside>
+                <div class="modal" id="summary-gallery" role="dialog">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-body">
+                                <div id="modal-summary" class="carousel">
+                                    <div class="carousel-inner">
+                                        <div class="item">
+
+                                            [%- content[0].getHtml('resources-uranium-thorium.summary-image-with-caption', 'main') %]
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
                 [%- content[0].getHtml("resources-uranium-thorium.summary-content") %] [% if(content[0].get('resources-uranium-thorium.chapter-dataset')){ %]
                 <a href="[%- content[0].get('resources-uranium-thorium.chapter-dataset').url() %]" class="excel">
@@ -103,8 +130,12 @@
                     [% var gallery = content[0].getGroup('resources-uranium-thorium.images').toArray() %] [% gallery.forEach(function(image) { %]
 
                     <div class="image">
-                        [%- image.getImageView("image","preview").asHtml() %]
-                        <div class="caption">[%- image.getFirstParagraph().text %]</div>
+
+                        [%- image.getImageView('image','preview').asHtml() -%]
+                         <div class="summary-caption">
+                             
+                            [%= image.getText('image-caption') %]
+                        </div>
                     </div>
 
                     [% }) %]
@@ -121,9 +152,9 @@
                                         [% var gallery = content[0].getGroup('resources-uranium-thorium.images').toArray() %] [% gallery.forEach(function(image, i) { %]
 
                                         <div class="item">
-                                            [%- image.getImage("image","main").asHtml() %]
+                                            [%- image.getImageView("image","main").asHtml() %]
                                             <caption>
-                                                [%- image.get('image-caption').asText() %]
+                                                [%- image.getText('image-caption') %]
                                             </caption>
                                         </div>
 

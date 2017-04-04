@@ -7,8 +7,8 @@
     <title>GA AERA Prismic project</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="prismic-api" content="https://ga-aera.prismic.io/api">
 
+    <meta name="prismic-api" content="https://ga-aera.prismic.io/api">
     <meta name="prismic-oauth-client-id" content="WLYdACYAAIIAx5fm">
 
     <link rel='stylesheet prefetch' href='//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css'>
@@ -30,38 +30,28 @@
 
     <script>
         $(document).on('prismic:rendered', function() {
+           
             $('.navbar').affix({
                 offset: {
                     top: 50
                 }
             });
+
             $('body').scrollspy({
                 target: ".navbar"
             });
+
             $(".carousel-inner div.item:first-child").addClass("active");
-            $("#modal-carousel").carousel({
+
+            $("#summary-gallery").carousel({
                 interval: false
             });
 
-            /* change modal title when slide changes */
-            $("#modal-carousel").on("slid.bs.carousel", function() {
-                $(".modal-title").html($(this).find(".active img").attr("title"));
-            })
+            $(".summary-image").click(function() {
+                $("#summary-gallery").modal("show");
+            });
 
-            /* when clicking a thumbnail */
             $(".image").click(function() {
-                // var content = $(".carousel-inner");
-                // var title = $(".modal-title");
-
-                // content.empty();  
-                // title.empty();
-
-                // var id = this.id;  
-
-                // active.addClass("active");
-                // title.html(active.find("img").attr("title"));
-
-                // show the modal
                 $("#modal-gallery").modal("show");
             });
 
@@ -110,10 +100,33 @@
             <section id="summary">
 
                 <h2>Summary</h2>
+                <aside class="summary-image">
 
-                <aside>
-                    [%- content[0].getHtml('resources-gas.summary-image-with-caption', 'preview') %]
+                        [% var images = content[0].getGroup('resources-gas.summary-image-with-caption').toArray() %] 
+                        [% images.forEach(function(image) { %] 
+                        [%- image.getImageView('summary-image','preview').asHtml() %]
+                        <div class="summary-caption">
+
+                            [%- image.getText('summary-image-caption') %]
+                        </div>
+                        [% }) %]
                 </aside>
+                <div class="modal" id="summary-gallery" role="dialog">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-body">
+                                <div id="modal-summary" class="carousel">
+                                    <div class="carousel-inner">
+                                        <div class="item">
+
+                                            [%- content[0].getHtml('resources-gas.summary-image-with-caption', 'main') %]
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
                 [%- content[0].getHtml("resources-gas.summary-content") %]
 
@@ -202,13 +215,15 @@
 
                 <div class="gallery">
 
-                    [% var gallery = content[0].getGroup('resources-gas.images').toArray() %] [% gallery.forEach(function(image) { %] [% var linkLarge = image.getImageView("image","large").url %]
+                    [% var gallery = content[0].getGroup('resources-gas.images').toArray() %] [% gallery.forEach(function(image) { %]
 
                     <div class="image">
-                        <!--<a href="[%- linkLarge  %]" target="_blank" title="Open larger image view">-->
-                        [%- image.getImageView("image","small").asHtml() %]
-                        <!--</a>-->
-                        <div class="caption">[%- image.getFirstParagraph().text %]</div>
+
+                        [%- image.getImageView('image','preview').asHtml() -%]
+                         <div class="summary-caption">
+
+                            [%= image.getText('image-caption') %]
+                        </div>
                     </div>
                     [% }) %]
                 </div>
@@ -224,13 +239,10 @@
                                         [% var gallery = content[0].getGroup('resources-gas.images').toArray() %] [% gallery.forEach(function(image, i) { %]
 
                                         <div class="item">
-
-                                            [%- image.getImage("image","large").asHtml() %]
+                                            [%- image.getImage("image","main").asHtml() %]
 
                                             <caption>
-
                                                 [%- image.get('image-caption').asText() %]
-
                                             </caption>
                                         </div>
 
@@ -239,9 +251,6 @@
                                     </div>
                                 </div>
                             </div>
-                            <!--<div class="modal-footer">
-                                <button class="btn btn-default" data-dismiss="modal">Close</button>
-                            </div>-->
                         </div>
                         <a class="carousel-control right" href="#modal-carousel" data-slide="next"><i class="glyphicon glyphicon-chevron-right"></i></a>
 
