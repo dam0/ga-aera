@@ -90,8 +90,6 @@ aside {
     height: 250px;
 }
 
-
-
 aside p {
     font-size: smaller;
 }
@@ -99,11 +97,11 @@ aside p {
 .image {
     width: 200px;
     height: auto;
-    margin: 1em;
+    margin: 2em;
     display: inline-block;
 }
 
-.carousel-inner {
+.carousel-inner>div {
     text-align: center;
 }
 
@@ -190,6 +188,7 @@ aside p {
 .image img:hover {
     cursor: pointer;
 }
+
 .summary-image:hover {
     cursor: pointer;
 }
@@ -244,6 +243,10 @@ span.number {
 
 #references li {
     margin-left: -2em;
+}
+
+.item.active img {
+    margin: 0 auto;
 }
 
 
@@ -309,7 +312,7 @@ section[data-field="Resource type"] {
     margin-top: 2em;
     font-weight: 400;
 }
-.summary-caption{
+.summary-caption {
     font-style: italic;
     font-size: smaller;
 }

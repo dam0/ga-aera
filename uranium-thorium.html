@@ -27,13 +27,13 @@
                     top: 50
                 }
             });
-            
+
             $('body').scrollspy({
                 target: ".navbar"
             });
 
             $(".carousel-inner div.item:first-child").addClass("active");
-            
+
             $("#summary-gallery").carousel({
                 interval: false
             });
@@ -88,14 +88,12 @@
                 <h2>Summary</h2>
                 <aside class="summary-image">
 
-                        [% var images = content[0].getGroup('resources-uranium-thorium.summary-image-with-caption').toArray() %] 
-                        [% images.forEach(function(image) { %] 
-                        [%- image.getImageView('summary-image','preview').asHtml() %]
-                        <div class="summary-caption">
-                            
-                            [%- image.getText('summary-image-caption') %]
-                        </div>
-                        [% }) %]
+                    [% var images = content[0].getGroup('resources-uranium-thorium.summary-image-with-caption').toArray() %] [% images.forEach(function(image) { %] [%- image.getImageView('summary-image','preview').asHtml() %]
+                    <div class="summary-caption">
+
+                        [%- image.getText('summary-image-caption') %]
+                    </div>
+                    [% }) %]
                 </aside>
                 <div class="modal" id="summary-gallery" role="dialog">
                     <div class="modal-dialog">
@@ -123,7 +121,7 @@
             <section id="identified">
                 <h2>Identified resources</h2>
 
-                [%- content[0].getHtml("resources-uranium-thorium.black-coal") %]
+                [%- content[0].getHtml("resources-uranium-thorium.summary-content") %]
 
                 <div class="gallery">
 
@@ -132,8 +130,8 @@
                     <div class="image">
 
                         [%- image.getImageView('image','preview').asHtml() -%]
-                         <div class="summary-caption">
-                             
+                        <div class="summary-caption">
+
                             [%= image.getText('image-caption') %]
                         </div>
                     </div>
@@ -149,8 +147,7 @@
                                 <div id="modal-carousel" class="carousel">
                                     <div class="carousel-inner">
 
-                                        [% var gallery = content[0].getGroup('resources-uranium-thorium.images').toArray() %] [% gallery.forEach(function(image, i) { %]
-
+                                        [% var gallery = content[0].getGroup('resources-uranium-thorium.images').toArray() %] [% gallery.forEach(function(image) { %] [% console.log(image) %]
                                         <div class="item">
                                             [%- image.getImageView("image","main").asHtml() %]
                                             <caption>
@@ -167,11 +164,6 @@
                         <a class="carousel-control right" href="#modal-carousel" data-slide="next"><i class="glyphicon glyphicon-chevron-right"></i></a>
                     </div>
                 </div>
-
-
-                [%- content[0].getHtml("resources-uranium-thorium.brown-coal") %]
-
-
             </section>
             <section id="prospective">
                 <h2>Prospective resources</h2>
