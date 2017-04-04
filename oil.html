@@ -38,6 +38,9 @@
             $("#summary-gallery").carousel({
                 interval: false
             });
+            $("#modal-gallery").carousel({
+                interval: false
+            });
 
             $(".summary-image").click(function() {
                 $("#summary-gallery").modal("show");
@@ -94,7 +97,7 @@
                         [%- image.getImageView('summary-image','preview').asHtml() %]
                         <div class="summary-caption">
                             
-                            [%- image.getText('summary-image-caption') %]
+                            [%- image.getHtml('summary-image-caption') -%]
                         </div>
                         [% }) %]
                 </aside>
@@ -132,9 +135,9 @@
                     <div class="image">
 
                         [%- image.getImageView('image','preview').asHtml() -%]
-                         <div class="summary-caption">
+                         <div class="caption">
                              
-                            [%= image.getText('image-caption') %]
+                            [%- image.getHtml('image-caption') -%]
                         </div>
                     </div>
 

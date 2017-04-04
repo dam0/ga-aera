@@ -29,7 +29,6 @@ p {
 .banner {
     margin: 0;
     padding: 0;
-    background-position: top left;
     background-size: cover;
     height: 140px;
 }
@@ -40,6 +39,7 @@ p {
 
 .oil-banner {
     background-image: url('assets/oil_banner.png');
+    background-position: right;
 }
 
 .coal-banner {
@@ -71,7 +71,7 @@ article>section {
 }
 
 .modal-dialog {
-    margin-top: 10%;
+    margin-top: 15%;
     width: 825px
 }
 
@@ -226,11 +226,6 @@ aside p {
     width: 20%;
 }
 
-
-/*.resource-type {
-    width: 20%;
-}*/
-
 .number {
     width: 5%;
     text-align: center;
@@ -249,70 +244,24 @@ span.number {
     margin: 0 auto;
 }
 
-
-/*
-.table{
-  display: table;
-  width: 80%;
-}
-.table > section.row.thead{
-  background: #006983;
-  color: white;
-  font-size: .8em;
-  padding: 8px;
-  line-height: 1.42857143;
-  vertical-align: top;
-  border-top: 1px solid #ddd;
-}
-section.row.thead >span{
-  display: table-cell;
-}
-.tblData{
-  width:20px;
-}
-table{
-  border-spacing: 0;
-  border-collapse: collapse;
-  width:80%;
-}
-.thead{
-  background: #006983;
-  color: white;
-  font-size: .8em;
-  padding: 8px;
-  line-height: 1.42857143;
-  vertical-align: top;
-  border-top: 1px solid #ddd;
-}
-.row{
-  width: 80%;
-  display: table-row;
-}
-
-.row section{
-  display: table-cell;
-  width: 8%;
-  border-bottom: 1px solid lightgray;
-  padding: .5em;
-}
-section[data-field="Basin Name"]{
-  /*display: none;*/
-
-background: #006983;
-color: white;
-
-}
 section[data-field="Resource type"] {
     width: 10%;
 }
 .row section.tcf {
     width: 50%;
 }
-.caption {
-    margin-top: 2em;
+.caption p, .summary-caption p  {
+    margin-top: 1em;
     font-weight: 400;
-}
-.summary-caption {
     font-style: italic;
     font-size: smaller;
+    line-height: 1em;
+     display: -webkit-flex; /* Safari */
+    -webkit-justify-content: space-around; /* Safari 6.1+ */
+    display: flex;
+    justify-content: space-around;
+}
+#references a{
+    background: transparent url('/assets/external-link.png') no-repeat 100% 50%;
+    padding-right: 12px;
 }
