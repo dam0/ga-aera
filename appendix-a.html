@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>GA AERA Prismic project</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta name="prismic-api" content="https://ga-aera.prismic.io/api">
+    <meta name="prismic-oauth-client-id" content="WLYdACYAAIIAx5fm">
+
+    <link rel='stylesheet prefetch' href='//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css'>
+    <link href="ga-aera-styles.css" rel="stylesheet">
+
+    <script src='//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+    <script src='//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js'></script>
+    <script src="js/ejs-1.0.js"></script>
+    <script src="js/prismic.io.min.js"></script>
+    <script src="js/prismic.io-singlepage-1.0.0.js"></script>
+
+    <script>
+        $(document).on('prismic:rendered', function() {
+            $('.navbar').affix({
+                offset: {
+                    top: 50
+                }
+            });
+
+            $('body').scrollspy({
+                target: ".navbar"
+            });
+        })
+    </script>
+
+    <script type="text/prismic-query" data-binding="content">
+        [ [:d = any(document.type, ["appendix-a-glossary"])] ]
+    </script>
+</head>
+
+<body>
+    <header class="banner uranium-banner">
+        <div class="banner-title">Australian Energy Resources Assessment</div>
+    </header>
+    <nav class="navbar navbar-inverse">
+        <div class="container-fluid">           
+                <a class="navbar-brand" href="#">Appendix A</a>
+            </div>
+        </div>
+    </nav>
+    <main>
+        <article>
+            <h1>Glossary</h1>
+            <section>
+                [%- content[0].getHtml('appendix-a-glossary.glossary-terms') %]
+            </section>
+        </article>
+    </main>
+</body>
+
+</html>
