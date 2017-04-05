@@ -1,6 +1,7 @@
 body {
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
     font-weight: 400;
+    font-size: 1.4em;
 }
 
 h1,
@@ -9,11 +10,11 @@ h3 {
     font-weight: 300;
 }
 
-p {
+/*p {
     font-size: small;
     font-weight: normal;
     line-height: 20px;
-}
+}*/
 
 .affix {
     top: 0;
@@ -32,7 +33,9 @@ p {
     background-size: cover;
     height: 140px;
 }
-
+.exec-banner{
+    background-image: url('assets/exec_banner.png');
+}
 .gas-banner {
     background-image: url('assets/gas_banner.png');
 }
@@ -67,7 +70,7 @@ article {
 
 article>section {
     clear: both;
-    padding-top: 5em;
+    padding-top: 3em;
 }
 
 .modal-dialog {
