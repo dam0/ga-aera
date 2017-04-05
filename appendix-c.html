@@ -40,7 +40,7 @@
 </head>
 
 <body>
-    <header class="banner uranium-banner">
+    <header class="banner appendix-c">
         <div class="banner-title">Australian Energy Resources Assessment</div>
     </header>
     <nav class="navbar navbar-inverse">
@@ -82,13 +82,13 @@
             <section id="unit-conversion">
                 <h2>Units</h2>
                 <div class="table">
-
-                    [% var units = content[0].getGroup(appendix-c.unit-conversion').toArray() %] [% units.forEach(function(row) { %]
+                    [% var units = content[0].getGroup('appendix-c.unit-conversion').toArray() %] 
+                    [% units.forEach( function(row) { %]
                     <div class="tr">
                         <div class="td" data-field="Unit">
-                            [%- row.getHtml('appendix-c.unit') %] </div>
+                            [%- row.getText('unit') %] </div>
                         <div class="td" data-field="Definition">
-                            [%- row.getHtml('appendix-c.definition') %]</div>
+                            [%- row.getText('definition') %]</div>
                     </div>
                     [% }) %]
                 </div>
@@ -103,13 +103,13 @@
                     [% rows.forEach(function(row) { %]
                     <div class="tr">
                         <div class="td" data-field="Multiple">
-                            [%- row.getHtml('appendix-c.multiple') %] </div>
+                            [%- row.getText('multiple') %] </div>
                         <div class="td" data-field="Exp">
-                            [%- row.getHtml('appendix-c.exp') %]</div>
+                            [%- row.getText('exp') %]</div>
                         <div class="td" data-field="Term">
-                            [%- row.getHtml('appendix-c.term') %]</div>
+                            [%- row.getText('term') %]</div>
                         <div class="td" data-field="Abbreviation">
-                            [%- row.getHtml('appendix-c.abbr') %]</div>
+                            [%- row.getText('abbr') %]</div>
                     </div>
                     [% }) %]
                 </div>
@@ -119,16 +119,16 @@
                 <h2>Energy measurement</h2>
                 
                  <div class="table">
-
-                    [% var rows = content[0].getGroup('appendix-c.energy-measurement').toArray() %] 
-                    [% rows.forEach(function(row) { %]
+                    [% var rows = content[0].getGroup('appendix-c.measure').toArray() %] 
+                    
+                    [% rows.forEach( function(row) { %]
                     <div class="tr">
                         <div class="td" data-field="Abbreviation">
-                            [%- row.getHtml('abbr') %]</div>
+                            [%- row.getText('abbr') %]</div>
                         <div class="td" data-field="Measure">
-                            [%- row.getHtml('measure') %]</div>
+                            [%- row.getText('measure') %]</div>
                         <div class="td" data-field="Resource">
-                            [%- row.getHtml(resource') %] </div>
+                            [%- row.getText('resource') %] </div>
                     </div>
                     [% }) %]
                 </div>
@@ -138,15 +138,16 @@
                 <h2>Fuel-specific to standard unit conversion factors</h2>
                 <div class="table">
 
-                    [% var rows = content[0].getGroup('appendix-c.fuel-units').toArray() %] 
-                    [% rows.forEach(function(row) { %]
+                    [ % var rows = content[0].getGroup('appendix-c.fuel-units').toArray() %] 
+                    [% rows.forEach( function(row) { %]
+                    [% console.log(row) %]
                     <div class="tr">
                         <div class="td" data-field="Fuel">
-                            [%- row.getHtml('fuel') %]</div>
+                            [ %- row.getText('fuel') %]</div>
                         <div class="td" data-field="Quantity">
-                            [%- row.getHtml('quantity') %]</div>
+                            [ %- row.getText('quantity') %]</div>
                         <div class="td" data-field="Conversion">
-                            [%- row.getHtml(conversion') %] </div>
+                            [ %- row.getText(conversion') %] </div>
                     </div>
                     [% }) %]
                 </div>
