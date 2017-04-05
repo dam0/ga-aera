@@ -90,25 +90,30 @@
                 <h2>Key messages</h2>
                 [%- content[0].getHtml("executive-summary.key-messages") %]
 
-                <div class="table">
+                <div class="table exec-summary-table">
                     <div class="table-caption">Table 1: Demonstrated resources of coal, uranium, gas and oil</div>
                     <div class="tr">
                         <div class="th">Resource</div>
-                        <div class="th">Demonstrated resource (PJ)</div>
+                        <div class="th" >Demonstrated resource (PJ)</div>
                     </div>
 
                     [% var resources = content[0].getGroup('executive-summary.resource-data').toArray() %]
-                     [% resources.forEach(function(row) { %] 
+                    [% resources.forEach(function(row) { %] 
                     <div class="tr">
                         <div class="td">[%- row.getText('resource') %]</div>
-                        <div class="td">[%- row.getNumber('demonstrated-resource')  %]</div>
+                        <div class="td" style="text-align: left; padding-left: 4em"> [%- Number(row.getNumber('demonstrated-resource')).toLocaleString('en') %]</div>
                     </div>
                     [% }) %]
                 </div>
-                <div class="footnote">
-                    <div><sup>a</sup> Reasonably assured resources recoverable at less than US$130/kg U</div>
-                    <div><sup>b</sup> Excludes 84 435 PJ of contingent oil shale</div>     
-                </div>
+
+                [% var additional = content[0].getSliceZone("executive-summary.additional").slices %] 
+                [% additional.forEach(function(slice) { %]  
+
+                    [% if(slice.sliceType ==  'footnotes'){ %]
+                        <div class="footnote"> [%- slice.asText()   %]</div>
+                        [% } else { %]
+                            [%- slice.asHtml()  %]
+                [% } }) %] 
             </section>
 
             <section id="introduction">
@@ -126,10 +131,14 @@
                 <h2>Australia's energy resources</h2>
                 [%- content[0].getHtml("executive-summary.energy-resources") %]
             </section>
-
-            <section id="references">
+             <section id="references">
                 <h2>References</h2>
-                [%- content[0].getHtml("executive-summary['references']") %]
+                <ul>
+
+                    [% var references = content[0].getGroup('executive-summary.reference').toArray() %] [% references.forEach(function(ref) { %]
+                    <li>[%- ref.asHtml() %]</li>
+                    [% }) %]
+                </ul>
             </section>
 
         </article>
