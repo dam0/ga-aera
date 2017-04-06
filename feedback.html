@@ -32,17 +32,17 @@
                 target: ".navbar"
             });
             // Menu settings
-			$('#menuToggle, .menu-close').on('click', function(){
-				$('#menuToggle').toggleClass('active');
-				$('body').toggleClass('body-push-toleft');
-				$('#theMenu').toggleClass('menu-open');
-			});
+            $('#menuToggle, .menu-close').on('click', function() {
+                $('#menuToggle').toggleClass('active');
+                $('body').toggleClass('body-push-toleft');
+                $('#theMenu').toggleClass('menu-open');
+            });
 
         })
     </script>
 
     <script type="text/prismic-query" data-binding="content">
-        [ [:d = any(document.type, ["appendix-a-glossary"])] ]
+        [ [:d = any(document.type, ["feedback"])] ]
     </script>
 </head>
 
@@ -62,10 +62,18 @@
     </div>
     <nav class="menu" id="theMenu">
         <div class="menu-wrap">
-            <h1 class="logo"><a href="http://www.ga.gov.au/aera">AERA</a></h1>
-            <i class="glyphicon glyphicon-remove menu-close"></i> <a href="http://www.ga.gov.au/aera" class="smoothScroll">Home</a> <a href="http://www.ga.gov.au/aera/executive-summary" class="smoothScroll">Executive Summary</a> <a href="http://www.ga.gov.au/aera/oil"
-                class="smoothScroll">Oil</a> <a href="http://www.ga.gov.au/aera/gas" class="smoothScroll">Gas</a> <a href="http://www.ga.gov.au/aera/coal" class="smoothScroll">Coal</a> <a href="http://www.ga.gov.au/aera/uranium-and-thorium" class="smoothScroll">Uranium and Thorium</a>            <a href="http://www.ga.gov.au/aera/appendix-a-glossary" class="smoothScroll">Appendix A: Glossary</a> <a href="http://www.ga.gov.au/aera/appendix-b-resource-classification" class="smoothScroll">Appendix B: Resource Classification</a> <a href="http://www.ga.gov.au/aera/appendix-c-energy-measurement-and-conversion-factors"
-                class="smoothScroll">Appendix C: Energy Measurement and Conversion Factors</a></div>
+            <h1 class="logo"><a href="/aera">AERA</a></h1>
+            <i class="glyphicon glyphicon-remove menu-close"></i> 
+            <a href="/aera">Home</a> 
+            <a href="/aera/executive-summary">Executive Summary</a> 
+            <a href="/aera/oil">Oil</a> 
+            <a href="/aera/gas">Gas</a> 
+            <a href="/aera/coal">Coal</a> 
+            <a href="/aera/uranium-and-thorium">Uranium and Thorium</a>            
+            <a href="/aera/appendix-a-glossary">Appendix A: Glossary</a> 
+            <a href="/aera/appendix-b-resource-classification">Appendix B: Resource Classification</a> 
+            <a href="/aera/appendix-c-energy-measurement-and-conversion-factors">Appendix C: Energy Measurement and Conversion Factors</a>
+        </div>
   
         <!-- Menu button -->
         <div id="menuToggle" class=""><i class="glyphicon glyphicon-align-justify"></i>
@@ -74,9 +82,32 @@
     </nav>
     <main>
         <article>
-            <h1>Glossary</h1>
+            <h1>Feedback</h1>
             <section>
-                [%- content[0].getHtml('appendix-a-glossary.glossary-terms') %]
+                [%- content[0].getHtml('feedback') %]
+                [% var questions = content[0].getGroup('feedback.questions').toArray() %] 
+                [% var item %]
+                [% questions.forEach(function(item, i) { %]
+                [ % console.log(item.data.question) %]
+                    [% var question = item.data.question.value %]  
+                    [ % console.log("question: ", question) %]     
+
+                    [% question.forEach(function(para, i){ %]
+
+                        [% console.log(para) %]
+
+
+                        [% if(para.type == 'list-item'){ %]
+                            [% item = para.text %]
+                            <li><input type="radio" name="" id="" value="0">
+                            <label for="">[%- para.text %]</label>
+                            </li>
+                        [% } %]
+
+
+                    [% }) %]
+                    [ %- item.asHtml() %]
+                [% }) %]
             </section>
         </article>
     </main>

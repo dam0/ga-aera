@@ -147,12 +147,6 @@ aside p {
     border: 1px solid #ddd;
     border-width: 1px 0 0 0 ;
 }
-div.td:empty{
-    background: #ddd;
-}
-.td:empty +. td{
-    border-top: 1px solid #ddd;
-}
 .th {
     background-color: #006983;
     color: white;
@@ -182,7 +176,9 @@ div.td:empty{
     display: inline-block;
     text-align: center;
 }
-
+div.td > span.td, div.th > span.th{
+    border: none;
+}
 #summary>.table .th>span,
 #summary>.table .td>span {
     width: 45%;
@@ -229,7 +225,9 @@ span.number {
 #references li {
     margin-left: -2em;
 }
-
+#references a{
+    font-style: italic;
+}
 .item.active img {
     margin: 0 auto;
 }
@@ -274,4 +272,200 @@ div.footnote > sup{
 .exec-summary-table div.th{
     padding-left: 3em;
     text-align: left;
+}
+
+.feedback_btn {
+  font-size: 0px;
+  cursor: pointer;
+  position: fixed;
+  top: 300px;
+  bottom: auto;
+  display: block;
+  border: none;
+  z-index: 2000000000;
+  right: -1px;
+  background-color: transparent;
+}
+
+
+/*------------------------------------*\
+   MENU CONFIGURATION
+\*------------------------------------*/
+
+.menu {
+    position: fixed;
+    left: -200px; /* To show menu on load set to 0px */
+    width: 260px;
+    height: 100%;
+    top: 0;
+    z-index: 50000;
+    text-align: left;
+}
+
+.menu.menu-open {
+    left: 0px;
+}
+
+.menu-wrap {
+    position: absolute;
+    top: 0;
+/*    left: 60px;
+*/    background: #003145;
+    width: 200px;
+    height: 100%;
+    overflow-y:auto;
+}
+
+.menu h1.logo a {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    line-height: 40px;
+    text-transform: uppercase;
+    color: #ffffff;
+    margin-top: 3em;
+}
+
+.menu h1.logo a:hover {
+    color: #fff;
+}
+
+.menu img.logo {
+    margin: 20px 0;
+    max-width: 160px;
+}
+
+.menu a {
+    margin:0 0 20px 20px;
+    color: #fff;
+    display: block;
+    font-size: 12px;
+}
+
+.menu a:hover {
+    color: #ffffff;
+}
+
+
+
+.menu a:active {
+    color: #ffffff;
+}
+
+.menu a > i {
+    float: left;
+    display: inline-block;
+    vertical-align: middle; 
+    text-align: left;
+    width: 25px;
+    font-size: 14px;
+    line-height: 40px;
+    margin: 25px 2px;
+}
+
+.menu-close {
+    cursor: pointer;
+    display: block;
+    position: absolute;
+    font-size: 14px;
+    color: #fff;
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    top: 5px;
+    left: 5px;
+/*    background:rgba(255,255,255,.8);
+*/    text-align:center;
+    -webkit-transition: all .1s ease-in-out;
+       -moz-transition: all .1s ease-in-out;
+        -ms-transition: all .1s ease-in-out;
+         -o-transition: all .1s ease-in-out;
+            transition: all .1s ease-in-out;
+}
+
+.menu-close:hover {
+
+    color: #a33f1f;
+    -webkit-transition: all .1s ease-in-out;
+       -moz-transition: all .1s ease-in-out;
+        -ms-transition: all .1s ease-in-out;
+         -o-transition: all .1s ease-in-out;
+            transition: all .1s ease-in-out;
+}
+
+/* Push the body after clicking the menu button */
+
+.body-push {
+    overflow-x: hidden;
+    position: relative;
+    left: 0;
+}
+
+.body-push-toright {
+    left: 200px;
+}
+
+.body-push-toleft {
+    left: -200px;
+}
+
+.menu,
+.body-push {
+    -webkit-transition: all .3s ease;
+       -moz-transition: all .3s ease;
+        -ms-transition: all .3s ease;
+         -o-transition: all .3s ease;
+            transition: all .3s ease;
+}
+
+#menuToggle {
+    position: absolute;
+    top: 5px;
+    right: 15px;
+    padding-left:5px;
+    padding-right:5px;
+    z-index: 11;
+    display: block;
+    text-align: center;
+    font-size: 18px;
+    color: #ffffff;
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    cursor: pointer;
+    background: #003145;
+    -webkit-transition: all .1s ease-in-out;
+       -moz-transition: all .1s ease-in-out;
+        -ms-transition: all .1s ease-in-out;
+         -o-transition: all .1s ease-in-out;
+            transition: all .1s ease-in-out;
+}
+
+#menuToggle:hover {
+    color: #ffffff;
+    background: #003145;
+    -webkit-transition: all .1s ease-in-out;
+       -moz-transition: all .1s ease-in-out;
+        -ms-transition: all .1s ease-in-out;
+         -o-transition: all .1s ease-in-out;
+            transition: all .1s ease-in-out;
+}
+
+.menu_txtbutton {
+    background-color: #003145;
+    position: absolute;
+    top: 0px;
+    left: 40px;
+    padding: 0px 15px 0 5px;
+}
+
+
+#menuToggle.active {
+  display:none;
+}
+
+#menuToggle.active {
+  position:absolute; 
+  top:0px
 }
