@@ -50,6 +50,10 @@ h3 {
 .uranium-banner {
     background-image: url('assets/uranium_banner.png');
 }
+.appendix-banner {
+    background-image: url('assets/appendix_banner.jpg');
+    background-position: right;
+}
 
 .banner-title {
     color: white;
@@ -114,8 +118,9 @@ aside p {
 .table {
     display: table;
     empty-cells: hide;
-    background: #006983;
+    /*background: #006983;*/
     border-bottom: 1px solid #ddd;
+  /*border-collapse: collapse;*/
 }
 
 .table-caption {
@@ -132,33 +137,40 @@ aside p {
 }
 
 .tr:nth-child(odd) {
-    background: #efefef;
+    /*background: #efefef;*/
 }
 
 .td, .th {
     display: table-cell;
     padding: .4em;
     line-height: 1.42857143;
+    border: 1px solid #ddd;
+    border-width: 1px 0 0 0 ;
 }
-
+div.td:empty{
+    background: #ddd;
+}
+.td:empty +. td{
+    border-top: 1px solid #ddd;
+}
 .th {
     background-color: #006983;
     color: white;
-    text-align: center;
+    /*text-align: center;*/
 }
 
 .th .number {
     padding-top: 1em;
     border-top: none;
 }
-.tr>.td:first-child {
+.row-heading {
     background: #006983;
     color: white;
     padding-left: 1em;
     border-top: 1px solid white;
 }
 
-.tr>.td:nth-child(2) {
+.row-heading + div.td {
     text-align: center;
 }
 
