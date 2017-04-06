@@ -44,6 +44,26 @@
     <script type="text/prismic-query" data-binding="content">
         [ [:d = any(document.type, ["feedback"])] ]
     </script>
+
+    <style>
+        label {
+            font-weight: normal;
+            font-size: small;
+        }
+        
+        .form-question-title {
+            display: block;
+            width: 100%;
+            padding: 0;
+            margin-bottom: 20px;
+            font-size: 21px;
+            line-height: inherit;
+            color: #333;
+            border: 0;
+            border-bottom: 1px solid #e5e5e5;
+        }
+    </style>
+
 </head>
 
 <body>
@@ -51,64 +71,77 @@
         <div class="banner-title">Australian Energy Resources Assessment</div>
     </header>
     <nav class="navbar navbar-inverse">
-        <div class="container-fluid">           
-                <a class="navbar-brand" href="#">APPENDIX A</a>
-            </div>
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">APPENDIX A</a>
+        </div>
         </div>
     </nav>
-    
+
     <div class="feedback_btn">
         <a href="http://www.ga.gov.au/aera/feedback"><img src="http://www.ga.gov.au/__data/assets/image/0014/41090/feedback.png" alt="Feedback link"></a>
     </div>
     <nav class="menu" id="theMenu">
         <div class="menu-wrap">
             <h1 class="logo"><a href="/aera">AERA</a></h1>
-            <i class="glyphicon glyphicon-remove menu-close"></i> 
-            <a href="/aera">Home</a> 
-            <a href="/aera/executive-summary">Executive Summary</a> 
-            <a href="/aera/oil">Oil</a> 
-            <a href="/aera/gas">Gas</a> 
-            <a href="/aera/coal">Coal</a> 
-            <a href="/aera/uranium-and-thorium">Uranium and Thorium</a>            
-            <a href="/aera/appendix-a-glossary">Appendix A: Glossary</a> 
-            <a href="/aera/appendix-b-resource-classification">Appendix B: Resource Classification</a> 
+            <i class="glyphicon glyphicon-remove menu-close"></i>
+            <a href="/aera">Home</a>
+            <a href="/aera/executive-summary">Executive Summary</a>
+            <a href="/aera/oil">Oil</a>
+            <a href="/aera/gas">Gas</a>
+            <a href="/aera/coal">Coal</a>
+            <a href="/aera/uranium-and-thorium">Uranium and Thorium</a>
+            <a href="/aera/appendix-a-glossary">Appendix A: Glossary</a>
+            <a href="/aera/appendix-b-resource-classification">Appendix B: Resource Classification</a>
             <a href="/aera/appendix-c-energy-measurement-and-conversion-factors">Appendix C: Energy Measurement and Conversion Factors</a>
         </div>
-  
+
         <!-- Menu button -->
         <div id="menuToggle" class=""><i class="glyphicon glyphicon-align-justify"></i>
             <div class="menu_txtbutton">MENU</div>
         </div>
     </nav>
     <main>
-        <article>
+        <article id="feedback">
             <h1>Feedback</h1>
-            <section>
-                [%- content[0].getHtml('feedback') %]
-                [% var questions = content[0].getGroup('feedback.questions').toArray() %] 
-                [% var item %]
-                [% questions.forEach(function(item, i) { %]
-                [ % console.log(item.data.question) %]
-                    [% var question = item.data.question.value %]  
-                    [ % console.log("question: ", question) %]     
 
-                    [% question.forEach(function(para, i){ %]
+            <form id="form_email_41200" enctype="multipart/form-data" action="http://www.ga.gov.au/aera/feedback" method="post">
+                <input type="hidden" name="SQ_FORM_41200_PAGE" value="1" class="sq-form-field" id="SQ_FORM_41200_PAGE">
+                <input type="hidden" name="form_email_41200_referral_url" value="http://www.ga.gov.au/aera/appendix-b-resource-classification">
+                <div class="row">
+                    <div class="form_container">
+                        <div class="col-md-12">
 
-                        [% console.log(para) %]
+                            <div class="form-field">
+                                
+                                [% var questions = content[0].getGroup('feedback.questions').toArray() %] 
 
+                                [% questions.forEach(function(item, i) { %]
+                                [% var name = "q" %]
+                                [% name = [name,i].join("") %]
+                                [% var question = item.data.question.value %] 
+                                [% question.forEach(function(para,i){ %]
+                                [% var Id = "R" %]
 
-                        [% if(para.type == 'list-item'){ %]
-                            [% item = para.text %]
-                            <li><input type="radio" name="" id="" value="0">
-                            <label for="">[%- para.text %]</label>
-                            </li>
-                        [% } %]
+                                [% Id = [name,Id,i].join("") %]
+                                 [% if(i == 0){ %]
+                                <p class="form-question-title">[%- (i==0) ? para.text : "" %] </p>
+                                [% } %]
 
+                                [% if(para.type == 'list-item'){ %]
+                                <div>
 
-                    [% }) %]
-                    [ %- item.asHtml() %]
-                [% }) %]
-            </section>
+                                [% console.log("Id:", Id)  %]
+                                <input type="radio" name="[%- name %]" id="[%- Id %]" value="0">
+                                <label for="[%- Id %]">[%- para.text %]</label></div> [% } else if( i != 0 ) { %]
+                                <p>[%- para.text %]</p>
+                                <textarea name="q41200:q5" cols="60" rows="3" id="" class="sq-form-field"></textarea> 
+                                [% }}) }) %]
+
+                            </div>
+                            <input type="submit" name="form_email_41200_submit" value="Send" class="sq-form-submit" id="form_email_41200_submit"> </div>
+                    </div>
+                </div>
+            </form>
         </article>
     </main>
 </body>

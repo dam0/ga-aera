@@ -469,3 +469,21 @@ div.footnote > sup{
   position:absolute; 
   top:0px
 }
+.sq-form-submit {
+    padding: 15px 80px 15px 80px;
+    background: #006983;
+    border: none;
+    color: #fff;
+    font-size: 1em;
+    margin-top: 1.5em;
+    transition: all 0.3s ease 0s;
+}
+
+.sq-form-submit:hover {
+    padding: 15px 80px 15px 80px;
+    background: #003145;
+    border: none;
+    color: #fff;
+    font-size: 1em;
+    margin-top: 1.5em;
+}
