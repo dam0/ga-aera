@@ -32,19 +32,11 @@
                 target: ".navbar"
             });
 
-            $(".carousel-inner div.item:first-child").addClass("active");
-
-            $("#summary-gallery").carousel({
-                interval: false
-            });
-
-            $(".summary-image").click(function() {
-                $("#summary-gallery").modal("show");
-            });
-
-            $(".image").click(function() {
-                $("#modal-gallery").modal("show");
-            });
+            $('#menuToggle, .menu-close').on('click', function(){
+				$('#menuToggle').toggleClass('active');
+				$('body').toggleClass('body-push-toleft');
+				$('#theMenu').toggleClass('menu-open');
+			});
         })
     </script>
 
@@ -57,32 +49,60 @@
     <header class="banner exec-banner">
         <div class="banner-title">Australian Energy Resources Assessment</div>
     </header>
+
+     <div class="feedback_btn">
+        <a href="/aera/feedback.html"><img src="http://www.ga.gov.au/__data/assets/image/0014/41090/feedback.png" alt="Feedback link"></a>
+    </div>
+
     <nav class="navbar navbar-inverse">
         <div class="container-fluid">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#menu">
                     <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
                     <span class="icon-bar"></span> 
                     <span class="icon-bar"></span> 
-                    <span class="icon-bar"></span>                        
+                    <span class="icon-bar"></span> 
+                    <span class="icon-bar"></span>   
+                    <span class="icon-bar"></span>   
+                    <span class="icon-bar"></span>   
+                    <span class="icon-bar"></span>   
+                    <span class="icon-bar"></span>                          
                 </button>
-                <a class="navbar-brand" href="#">SUMMARY</a>
             </div>
             <div>
                 <div class="collapse navbar-collapse" id="menu">
                     <ul class="nav navbar-nav">
-                        <li><a href="#key-messages">Key messages</a></li>
-                        <li><a href="#introduction">Introduction</a></li>
-                        <li><a href="#world">World energy market</a></li>
-                        <li><a href="#resources">Energy resources</a></li>
-                        <li><a href="#references">References</a></li>
+                        <li role="presentation"><a href="/aera/default.html">Home</a></li>
+                        <li role="presentation" class="active"><a href="/aera/executive-summary.html">Executive Summary</a></li>
+                        <li role="presentation"><a href="/aera/oil.html">Oil</a></li>
+                        <li role="presentation"><a href="/aera/gas.html">Gas</a></li>
+                        <li role="presentation"><a href="/aera/coal.html">Coal</a></li>
+                        <li role="presentation"><a href="/aera/uranium-and-thorium.html">Uranium and Thorium</a></li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                                Appendix <span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li role="presentation"><a href="/aera/appendix-a.html">A: Glossary</a></li>
+                                <li role="presentation"><a href="/aera/appendix-b.html">B: Resource Classification</a></li>
+                                <li role="presentation"><a href="/aera/appendix-c.html">C: Measurement and Conversion</a></li>
+                            </ul>
+                        </li>
                     </ul>
                 </div>
             </div>
         </div>
     </nav>
+
     <main>
+        <nav id="page-nav">
+            <ul class="nav nav-pills nav-stacked" >
+               <li><a href="#key-messages">Key messages</a></li>
+                <li><a href="#introduction">Introduction</a></li>
+                <li><a href="#world">World energy market</a></li>
+                <li><a href="#resources">Energy resources</a></li>
+                <li><a href="#references">References</a></li>
+            </ul>
+        </nav>
         <article>
             <h1>Executive Summary</h1>
 

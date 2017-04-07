@@ -31,7 +31,7 @@
             $('body').scrollspy({
                 target: ".navbar"
             });
-            // Menu settings
+
             $('#menuToggle, .menu-close').on('click', function() {
                 $('#menuToggle').toggleClass('active');
                 $('body').toggleClass('body-push-toleft');
@@ -45,24 +45,6 @@
         [ [:d = any(document.type, ["feedback"])] ]
     </script>
 
-    <style>
-        label {
-            font-weight: normal;
-            font-size: small;
-        }
-        
-        .form-question-title {
-            display: block;
-            width: 100%;
-            padding: 0;
-            margin-bottom: 20px;
-            font-size: 21px;
-            line-height: inherit;
-            color: #333;
-            border: 0;
-            border-bottom: 1px solid #e5e5e5;
-        }
-    </style>
 
 </head>
 
@@ -70,41 +52,63 @@
     <header class="banner appendix-banner">
         <div class="banner-title">Australian Energy Resources Assessment</div>
     </header>
-    <nav class="navbar navbar-inverse">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="#">APPENDIX A</a>
-        </div>
-        </div>
-    </nav>
 
     <div class="feedback_btn">
-        <a href="http://www.ga.gov.au/aera/feedback"><img src="http://www.ga.gov.au/__data/assets/image/0014/41090/feedback.png" alt="Feedback link"></a>
+        <a href="/aera/feedback.html"><img src="http://www.ga.gov.au/__data/assets/image/0014/41090/feedback.png" alt="Feedback link"></a>
     </div>
-    <nav class="menu" id="theMenu">
-        <div class="menu-wrap">
-            <h1 class="logo"><a href="/aera">AERA</a></h1>
-            <i class="glyphicon glyphicon-remove menu-close"></i>
-            <a href="/aera">Home</a>
-            <a href="/aera/executive-summary">Executive Summary</a>
-            <a href="/aera/oil">Oil</a>
-            <a href="/aera/gas">Gas</a>
-            <a href="/aera/coal">Coal</a>
-            <a href="/aera/uranium-and-thorium">Uranium and Thorium</a>
-            <a href="/aera/appendix-a-glossary">Appendix A: Glossary</a>
-            <a href="/aera/appendix-b-resource-classification">Appendix B: Resource Classification</a>
-            <a href="/aera/appendix-c-energy-measurement-and-conversion-factors">Appendix C: Energy Measurement and Conversion Factors</a>
-        </div>
-
-        <!-- Menu button -->
-        <div id="menuToggle" class=""><i class="glyphicon glyphicon-align-justify"></i>
-            <div class="menu_txtbutton">MENU</div>
+    <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#menu">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span> 
+                    <span class="icon-bar"></span> 
+                    <span class="icon-bar"></span> 
+                    <span class="icon-bar"></span>   
+                    <span class="icon-bar"></span>   
+                    <span class="icon-bar"></span>   
+                    <span class="icon-bar"></span>   
+                    <span class="icon-bar"></span>                          
+                </button>
+            </div>
+            <div>
+                <div class="collapse navbar-collapse" id="menu">
+                    <ul class="nav navbar-nav">
+                        <li role="presentation"><a href="/aera/default.html">Home</a></li>
+                        <li role="presentation"><a href="/aera/executive-summary.html">Executive Summary</a></li>
+                        <li role="presentation"><a href="/aera/oil.html">Oil</a></li>
+                        <li role="presentation"><a href="/aera/gas.html">Gas</a></li>
+                        <li role="presentation"><a href="/aera/coal.html">Coal</a></li>
+                        <li role="presentation"><a href="/aera/uranium-and-thorium.html">Uranium and Thorium</a></li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                                Appendix <span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li role="presentation"><a href="/aera/appendix-a.html">A: Glossary</a></li>
+                                <li role="presentation"><a href="/aera/appendix-b.html">B: Resource Classification</a></li>
+                                <li role="presentation"><a href="/aera/appendix-c.html">C: Measurement and Conversion</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
         </div>
     </nav>
+    
     <main>
+        <nav id="page-nav">
+            <ul class="nav nav-pills nav-stacked" >
+                <li><a href="#summary">Summary</a></li>
+                <li><a href="#identified">Identified resources</a></li>
+                <li><a href="#prospective">Prospective resources</a></li>
+                <li><a href="#world">World resources</a></li>
+                <li><a href="#references">References</a></li>
+            </ul>
+        </nav>
         <article id="feedback">
             <h1>Feedback</h1>
 
-            <form id="form_email_41200" enctype="multipart/form-data" action="http://www.ga.gov.au/aera/feedback" method="post">
+            <form id="form_email_41200" enctype="multipart/form-data" action="/aera/feedback" method="post">
                 <input type="hidden" name="SQ_FORM_41200_PAGE" value="1" class="sq-form-field" id="SQ_FORM_41200_PAGE">
                 <input type="hidden" name="form_email_41200_referral_url" value="http://www.ga.gov.au/aera/appendix-b-resource-classification">
                 <div class="row">
@@ -131,7 +135,7 @@
                                 <div>
 
                                 [% console.log("Id:", Id)  %]
-                                <input type="radio" name="[%- name %]" id="[%- Id %]" value="0">
+                                <input type="radio" name="[%- name %]" id="[%- Id %]" value="0"/>
                                 <label for="[%- Id %]">[%- para.text %]</label></div> [% } else if( i != 0 ) { %]
                                 <p>[%- para.text %]</p>
                                 <textarea name="q41200:q5" cols="60" rows="3" id="" class="sq-form-field"></textarea> 

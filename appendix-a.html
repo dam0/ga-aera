@@ -27,16 +27,21 @@
                     top: 50
                 }
             });
+            $('.nav-stacked').affix({
+                offset: {
+                    top: 100
+                }
+            });
 
             $('body').scrollspy({
                 target: ".navbar"
             });
             // Menu settings
-			$('#menuToggle, .menu-close').on('click', function(){
-				$('#menuToggle').toggleClass('active');
-				$('body').toggleClass('body-push-toleft');
-				$('#theMenu').toggleClass('menu-open');
-			});
+            $('#menuToggle, .menu-close').on('click', function() {
+                $('#menuToggle').toggleClass('active');
+                $('body').toggleClass('body-push-toleft');
+                $('#theMenu').toggleClass('menu-open');
+            });
 
         })
     </script>
@@ -44,34 +49,57 @@
     <script type="text/prismic-query" data-binding="content">
         [ [:d = any(document.type, ["appendix-a-glossary"])] ]
     </script>
+
 </head>
 
 <body>
     <header class="banner appendix-banner">
         <div class="banner-title">Australian Energy Resources Assessment</div>
     </header>
+    
+    <div class="feedback_btn">
+        <a href="/aera/feedback.html"><img src="http://www.ga.gov.au/__data/assets/image/0014/41090/feedback.png" alt="Feedback link"></a>
+    </div>
+
     <nav class="navbar navbar-inverse">
-        <div class="container-fluid">           
-                <a class="navbar-brand" href="#">APPENDIX A</a>
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#menu">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span> 
+                    <span class="icon-bar"></span> 
+                    <span class="icon-bar"></span> 
+                    <span class="icon-bar"></span>   
+                    <span class="icon-bar"></span>   
+                    <span class="icon-bar"></span>   
+                    <span class="icon-bar"></span>   
+                    <span class="icon-bar"></span>                          
+                </button>
+            </div>
+            <div>
+                <div class="collapse navbar-collapse" id="menu">
+                    <ul class="nav navbar-nav">
+                        <li role="presentation"><a href="/aera/default.html">Home</a></li>
+                        <li role="presentation"><a href="/aera/executive-summary.html">Executive Summary</a></li>
+                        <li role="presentation"><a href="/aera/oil.html">Oil</a></li>
+                        <li role="presentation"><a href="/aera/gas.html">Gas</a></li>
+                        <li role="presentation"><a href="/aera/coal.html">Coal</a></li>
+                        <li role="presentation"><a href="/aera/uranium-and-thorium.html">Uranium and Thorium</a></li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                                Appendix <span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li role="presentation" class="active"><a href="/aera/appendix-a.html">A: Glossary</a></li>
+                                <li role="presentation"><a href="/aera/appendix-b.html">B: Resource Classification</a></li>
+                                <li role="presentation"><a href="/aera/appendix-c.html">C: Measurement and Conversion</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
             </div>
         </div>
     </nav>
-    
-    <div class="feedback_btn">
-        <a href="http://www.ga.gov.au/aera/feedback"><img src="http://www.ga.gov.au/__data/assets/image/0014/41090/feedback.png" alt="Feedback link"></a>
-    </div>
-    <nav class="menu" id="theMenu">
-        <div class="menu-wrap">
-            <h1 class="logo"><a href="http://www.ga.gov.au/aera">AERA</a></h1>
-            <i class="glyphicon glyphicon-remove menu-close"></i> <a href="http://www.ga.gov.au/aera" class="smoothScroll">Home</a> <a href="http://www.ga.gov.au/aera/executive-summary" class="smoothScroll">Executive Summary</a> <a href="http://www.ga.gov.au/aera/oil"
-                class="smoothScroll">Oil</a> <a href="http://www.ga.gov.au/aera/gas" class="smoothScroll">Gas</a> <a href="http://www.ga.gov.au/aera/coal" class="smoothScroll">Coal</a> <a href="http://www.ga.gov.au/aera/uranium-and-thorium" class="smoothScroll">Uranium and Thorium</a>            <a href="http://www.ga.gov.au/aera/appendix-a-glossary" class="smoothScroll">Appendix A: Glossary</a> <a href="http://www.ga.gov.au/aera/appendix-b-resource-classification" class="smoothScroll">Appendix B: Resource Classification</a> <a href="http://www.ga.gov.au/aera/appendix-c-energy-measurement-and-conversion-factors"
-                class="smoothScroll">Appendix C: Energy Measurement and Conversion Factors</a></div>
-  
-        <!-- Menu button -->
-        <div id="menuToggle" class=""><i class="glyphicon glyphicon-align-justify"></i>
-            <div class="menu_txtbutton">MENU</div>
-        </div>
-    </nav>
+
     <main>
         <article>
             <h1>Glossary</h1>
