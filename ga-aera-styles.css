@@ -83,7 +83,6 @@ h3 {
   padding: .5em 16%;
   text-shadow: 0px 2px 30px rgba(0, 0, 0, 1);
   margin-bottom: 14px;
-    width: 300px;
 }
 .home-title{
     color: white;
@@ -93,6 +92,7 @@ h3 {
     text-align: center;
     background: linear-gradient(to right, rgba(0,0,0,0), #003145 45%, #003145 50%, rgba(0,0,0,0));
     border: none;
+    width: 300px;
 
 }
 .title-main{
