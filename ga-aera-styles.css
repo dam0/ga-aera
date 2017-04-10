@@ -23,6 +23,8 @@ h3 {
 
 .navbar {
   border-radius: 0;
+  background: linear-gradient(to right, rgba(0,0,0,0), black 25%, black 50%, rgba(0,0,0,0));
+  border: none;
 }
 
 .banner {
@@ -42,7 +44,7 @@ h3 {
 
 .oil-banner {
   background-image: url('assets/oil_banner.png');
-  background-position: right;
+  background-position: center;
 }
 
 .coal-banner {
@@ -62,8 +64,9 @@ h3 {
   color: white;
   font-weight: bold;
   font-size: xx-large;
-  padding: 1.5em 15%;
-  text-shadow: 0px 2px 30px rgba(0, 0, 0, 1)
+  padding: .5em 16%;
+  text-shadow: 0px 2px 30px rgba(0, 0, 0, 1);
+  margin-bottom: 14px;
 }
 
 main {
@@ -358,6 +361,7 @@ div.footnote>sup {
   left: 0;
   margin: 1em;
   padding: 0;
+  width: 15%;
 }
 
 #page-nav .nav>.active>a {
@@ -367,10 +371,10 @@ div.footnote>sup {
   background-color: transparent;
 }
 
-#page-nav .nav>.active>a:before {
+/*#page-nav .nav>.active>a:before {
   font-family: 'Glyphicons Halflings';
   content: "\e250  ";
-}
+}*/
 
 #page-nav .nav-pills>li.active>a,
 .nav-pills>li.active>a:focus,
@@ -388,7 +392,6 @@ pre {
   word-wrap: break-word;
 }
 .container-fluid{
-
+    padding: 0 15%;
     margin: 0 auto;
-    width: 74%;
 }

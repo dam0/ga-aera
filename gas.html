@@ -38,7 +38,7 @@
             });
 
             $('body').scrollspy({
-                target: ".navbar"
+                target: "#page-nav"
             });
 
             $(".carousel-inner div.item:first-child").addClass("active");
@@ -74,12 +74,7 @@
 
     <header class="banner gas-banner">
         <div class="banner-title">Australian Energy Resources Assessment</div>
-    </header>
-
-    <div class="feedback_btn">
-        <a href="/aera/feedback.html"><img src="http://www.ga.gov.au/__data/assets/image/0014/41090/feedback.png" alt="Feedback link"></a>
-    </div>
-        <nav class="navbar navbar-inverse">
+    <nav class="navbar navbar-inverse">
         <div class="container-fluid">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#menu">
@@ -105,7 +100,7 @@
                         <li role="presentation"><a href="/aera/uranium-and-thorium.html">Uranium and Thorium</a></li>
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                                Appendix <span class="caret"></span></a>
+                                Appendixes<span class="caret"></span></a>
                             <ul class="dropdown-menu">
                                 <li role="presentation"><a href="/aera/appendix-a.html">A: Glossary</a></li>
                                 <li role="presentation"><a href="/aera/appendix-b.html">B: Resource Classification</a></li>
@@ -117,6 +112,11 @@
             </div>
         </div>
     </nav>
+    </header>
+
+    <div class="feedback_btn">
+        <a href="/aera/feedback.html"><img src="http://www.ga.gov.au/__data/assets/image/0014/41090/feedback.png" alt="Feedback link"></a>
+    </div>
     
     <main>
         <nav id="page-nav">
@@ -275,9 +275,9 @@
                                         <div class="item">
                                             [%- image.getImage("image","main").asHtml() %]
 
-                                            <caption>
+                                            <small class="caption">
                                                 [%- image.get('image-caption').asText() %]
-                                            </caption>
+                                            </small>
                                         </div>
 
                                         [% }) %]
@@ -295,7 +295,6 @@
 
                 [%- content[0].getHtml("resources-gas.prospective-resources") %]
                 <div class="table">
-                    <caption></caption>
                     <div class="tr">
                         <div class="th" style="width: 20%">Basin Name</div>
                         <div class="th" style="width: 20%">Resource type</div>
