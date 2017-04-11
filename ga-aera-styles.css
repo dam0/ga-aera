@@ -343,19 +343,6 @@ div.footnote>sup {
   text-align: left;
 }
 
-.feedback_btn {
-  font-size: 0px;
-  cursor: pointer;
-  position: fixed;
-  top: 300px;
-  bottom: auto;
-  display: block;
-  border: none;
-  z-index: 2000000000;
-  right: -1px;
-  width: 2em;
-  height: 4em;
-}
 .feedback{
   display: inline-block;
   background: #999;
