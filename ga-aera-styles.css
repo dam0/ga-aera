@@ -92,7 +92,6 @@ h3 {
     text-align: center;
     background: linear-gradient(to right, rgba(0,0,0,0), #003145 45%, #003145 50%, rgba(0,0,0,0));
     border: none;
-    width: 300px;
 
 }
 .title-main{
@@ -354,9 +353,29 @@ div.footnote>sup {
   border: none;
   z-index: 2000000000;
   right: -1px;
-  background-color: transparent;
+  width: 2em;
+  height: 4em;
 }
-
+.feedback{
+  display: inline-block;
+  background: #999;
+  color: white;
+  padding: .5em;
+  position: fixed;
+  right: -4em;;
+  top: 50%;
+  margin: 0;
+  transform: rotate(90deg);
+  border: 1px solid #fff;
+  border-top: 0; 
+  border-radius: 0 1em;
+letter-spacing: 0.1em;
+}
+.feedback:hover{
+  color: white;
+  text-decoration: none;
+  background-color: red;
+}
 .sq-form-submit {
   padding: 15px 80px 15px 80px;
   background: #006983;
