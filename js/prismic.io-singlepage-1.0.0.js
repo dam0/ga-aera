@@ -42,10 +42,18 @@
     var queryScripts = document.querySelectorAll('script[type="text/prismic-query"]');
     for(var i=0; i<queryScripts.length; i++) {
       var node = queryScripts[i];
-      conf.bindings[node.dataset['binding'] || ""] = {
-        form: node.dataset['form'] || 'everything',
+
+      //  conf.bindings[node.dataset['binding'] || ""] = {
+      //   form: node.dataset['form'] || 'everything',
+      //   predicates: node.textContent
+      // };
+      // console.log(conf.bindings);
+// ie10 cant use 'dataset' (D.C)
+      conf.bindings[node.getAttribute('data-binding' || "")] = {
+        form: node.getAttribute('form') || 'everything',
         predicates: node.textContent
       };
+
       node.parentNode.removeChild(node);
     }
 
@@ -66,6 +74,7 @@
       var documentSets = {};
 
       for(var binding in conf.bindings) {
+      console.log(binding);
         Api.form(conf.bindings[binding].form).ref(maybeRef || Api.master()).query(conf.bindings[binding].predicates).submit(
           function() {
             var x = binding;
